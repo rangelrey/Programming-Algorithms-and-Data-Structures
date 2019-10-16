@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=Average
+comment0.text=\n\ Write\ a\ description\ of\ class\ average\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=numbers
+comment1.target=double\ findSum(double[])
+comment2.params=numbers
+comment2.target=double\ computeAverage(double[])
+comment3.params=args
+comment3.target=void\ main(java.lang.String[])
+comment4.params=numbers
+comment4.target=double\ showArray(double[])
+comment5.params=numbers
+comment5.target=int[]\ doubleArray(int[])
+comment6.params=input\ expected
+comment6.target=void\ testFindSum(double[],\ double)
+numComments=7

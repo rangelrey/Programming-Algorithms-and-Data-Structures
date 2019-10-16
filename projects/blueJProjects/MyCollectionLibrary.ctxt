@@ -1,0 +1,24 @@
+#BlueJ class context
+comment0.target=MyCollectionLibrary
+comment0.text=import\ java.utils.Arrays;
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment10.params=numbers\ toFind
+comment10.target=int\ binarySearch(int[],\ int)
+comment2.params=strings
+comment2.target=int[]\ returnLengths(java.lang.String[])
+comment3.params=numbers
+comment3.target=void\ bubbleSort(int[])
+comment4.params=numbers\ i1\ i2
+comment4.target=void\ swap(int[],\ int,\ int)
+comment5.params=array\ start
+comment5.target=int\ findSmallestNumberIndex(int[],\ int)
+comment6.params=numbers
+comment6.target=void\ selectionSort(int[])
+comment7.params=numbers
+comment7.target=void\ insertionSort(int[])
+comment8.params=numbers\ top
+comment8.target=void\ doInsert(int[],\ int)
+comment9.params=numbers\ toFind
+comment9.target=int\ findNumber(int[],\ int)
+numComments=11
