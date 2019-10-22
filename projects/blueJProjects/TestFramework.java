@@ -4,15 +4,14 @@ public class TestFramework {
         int[] array2 = {1};
         String[] s = {"a","bb","ccc","edke","kkk"};
         int[] numbers = {2,3,4,1};
-  
+
         boolean testResult = testEqualIntArrays(array1, array2);
 
         testSelectionSort (numbers);
 
-        
     }
-    
-        public static boolean testEqualIntArrays (int[] array1, int[] array2) {
+
+    public static boolean testEqualIntArrays (int[] array1, int[] array2) {
         boolean equals = true;
 
         if(array1.length == array2.length){
@@ -29,7 +28,7 @@ public class TestFramework {
         return equals;
     }    
 
-      public static void testSelectionSort (int[] numbers) {
+    public static void testSelectionSort (int[] numbers) {
         boolean result;
         MyCollectionLibrary.selectionSort(numbers);
 
@@ -46,5 +45,18 @@ public class TestFramework {
             } else{ System.out.println("The array is sorted");}
 
         }
-    }    
+    }  
+
+    public static int[] create100LenghtArray () {
+
+        int[] arr;
+        arr = new int[100];
+        for (int i = 0; i < 100; i = i+1) {
+            arr[i] = i;
+        }
+        return arr;
+
+    }
+
+
 }

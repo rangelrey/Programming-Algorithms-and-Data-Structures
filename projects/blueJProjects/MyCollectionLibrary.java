@@ -7,8 +7,6 @@ public class MyCollectionLibrary {
         int[] numbers = {2,3,4,1};
         int[] result = returnLengths(s);
 
-    
-
         for (int i = 0; i < result.length; i = i+1) {
             System.out.println ( result[i]);
         }
@@ -39,15 +37,21 @@ public class MyCollectionLibrary {
         } while (madeSwap);                                 // <8>
     }    
 
-    
-
-
+    public static int numberOfSwaps;
     public static void swap (int[] numbers, int i1, int i2) {
         int temp;
-        
+
         temp = numbers[i1];
         numbers[i1] = numbers[i2];
         numbers[i2] = temp;
+        numberOfSwaps +=1;
+    }
+
+    public static void measureBubbleSort (int[] numbers) {
+        numberOfSwaps = 0;
+        bubbleSort (numbers);
+        System.out.println ("Number of swaps for array length " + numbers.length +
+            " is " + numberOfSwaps);
     }
 
     public static int findSmallestNumberIndex (int[] array, int start) {
@@ -72,8 +76,6 @@ public class MyCollectionLibrary {
             t = t + 1;                                            // <4>
         } while (t != numbers.length);                          // <5>
     }
-
-  
 
     public static void insertionSort (int[] numbers) {
         int t;
@@ -129,6 +131,22 @@ public class MyCollectionLibrary {
         return -1;
     }
 
+    public static int factorialmio (int number) {
+        int result = number;
+        int t = number-1;
+        do {                                                  // <2>
+            result *= t;
+            t-=1;
+        } while (t>0); 
 
+        return result;
+    }
 
+    public static void factorial (int n) {
+        int result = 1;
+
+        for (int i = 1; i<n; i+=1) {
+            result *= i;
+        }
+    }
 }

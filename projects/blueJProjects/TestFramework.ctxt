@@ -6,4 +6,6 @@ comment2.params=array1\ array2
 comment2.target=boolean\ testEqualIntArrays(int[],\ int[])
 comment3.params=numbers
 comment3.target=void\ testSelectionSort(int[])
-numComments=4
+comment4.params=
+comment4.target=int[]\ create100LenghtArray()
+numComments=5

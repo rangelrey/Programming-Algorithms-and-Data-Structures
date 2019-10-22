@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=ArrayInt
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=
+comment2.target=java.lang.String\ toString()
+comment3.params=maximumSize\ currentSize
+comment3.target=ArrayInt(int,\ int)
+numComments=4
