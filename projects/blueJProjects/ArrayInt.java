@@ -4,10 +4,10 @@ public class ArrayInt
     private int currentSize;
     private int maximumSize;
 
-    
     public static void main (String[] args) {
-        ArrayInt arr1 = new ArrayInt (10, 10);
 
+        ArrayInt arr1 = new ArrayInt (10, 10);
+        arr1.insert(99,3);
         System.out.println ("Array 1: " + arr1);
 
         ArrayInt arr2 = new ArrayInt (10, 5);
@@ -21,12 +21,20 @@ public class ArrayInt
 
     public String toString () {
         String result = "";
-
         result = result + "[";
-        for (int i=0; i<currentSize; i=i+1) {
-            result = result + array[i];
-            if (i+1<currentSize) {     // only add the ", " if we are not at the end
-                result = result + ", ";
+
+        if(currentSize>maximumSize) {
+            System.out.println("Current Size cannot be superior than the Maximum Size");
+        }
+
+        else {
+            for (int i=0; i<currentSize; i=i+1) {
+
+
+                result = result + array[i];
+                if (i+1<currentSize) {     // only add the ", " if we are not at the end
+                    result = result + ", ";
+                }
             }
         }
         result = result + "]";
@@ -39,4 +47,38 @@ public class ArrayInt
         this.maximumSize = maximumSize;
         this.currentSize = currentSize;
     }
-}
+
+
+    public int get (int index) {
+        if (index < 0 || index >= currentSize) {
+            // For now, print and ignore, but we will change this later.
+            System.out.println ("Error in get: index is out of bounds");
+            return -1;    // <1>
+        }
+
+        return array[index];
+    }
+
+    public void insert (int value, int index) {
+
+        if (index < 0 || index >= currentSize || currentSize>maximumSize) {
+            System.out.println ("Index out of range");}
+        else {
+            for (int i=currentSize-2; i>=index ; i=i-1) {
+                array[i+1]=array[i];
+
+            }
+        }
+
+        for (int i=0; i<array.length ; i=i+1){
+        }
+        array[index]=value;
+        for (int i=0; i<array.length ; i=i+1){
+
+        }
+        currentSize = currentSize + 1;
+        maximumSize = maximumSize +1;
+
+    }
+}  
+

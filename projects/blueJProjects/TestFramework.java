@@ -1,13 +1,15 @@
 public class TestFramework {
     public static void main (String[] args) {
-        int[] array1 = {1};
-        int[] array2 = {1};
-        String[] s = {"a","bb","ccc","edke","kkk"};
-        int[] numbers = {2,3,4,1};
+        //int[] array1 = {1};
+        //int[] array2 = {1};
+        //String[] s = {"a","bb","ccc","edke","kkk"};
+        //int[] numbers = {2,3,4,1};
 
-        boolean testResult = testEqualIntArrays(array1, array2);
+        //boolean testResult = testEqualIntArrays(array1, array2);
 
-        testSelectionSort (numbers);
+        //testSelectionSort (numbers);
+        ArrayInt arr1 = new ArrayInt (10, -1);
+        testArrayInt(arr1.toString(), "[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]");
 
     }
 
@@ -58,5 +60,12 @@ public class TestFramework {
 
     }
 
+    public static void testArrayInt(String result, String expected){
+        if (result.equals (expected)){
+
+        } else {
+            System.out.println ("Error "+result+" != " +expected);
+        }
+    }
 
 }

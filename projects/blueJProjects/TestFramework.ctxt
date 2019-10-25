@@ -8,4 +8,6 @@ comment3.params=numbers
 comment3.target=void\ testSelectionSort(int[])
 comment4.params=
 comment4.target=int[]\ create100LenghtArray()
-numComments=5
+comment5.params=result\ expected
+comment5.target=void\ testArrayInt(java.lang.String,\ java.lang.String)
+numComments=6
