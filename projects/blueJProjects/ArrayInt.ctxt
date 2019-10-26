@@ -10,4 +10,6 @@ comment4.params=index
 comment4.target=int\ get(int)
 comment5.params=value\ index
 comment5.target=void\ insert(int,\ int)
-numComments=6
+comment6.params=index
+comment6.target=void\ delete(int)
+numComments=7

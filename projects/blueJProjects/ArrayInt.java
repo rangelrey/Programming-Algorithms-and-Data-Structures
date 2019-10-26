@@ -6,10 +6,14 @@ public class ArrayInt
 
     public static void main (String[] args) {
 
-        ArrayInt arr1 = new ArrayInt (10, 10);
+        ArrayInt arr1 = new ArrayInt (10, 9);
         arr1.insert(99,3);
+  
+        System.out.println ("Array 1: " + arr1);
+        arr1.delete(3);
         System.out.println ("Array 1: " + arr1);
 
+        
         ArrayInt arr2 = new ArrayInt (10, 5);
 
         System.out.println ("Array 2: " + arr2);
@@ -30,7 +34,6 @@ public class ArrayInt
         else {
             for (int i=0; i<currentSize; i=i+1) {
 
-
                 result = result + array[i];
                 if (i+1<currentSize) {     // only add the ", " if we are not at the end
                     result = result + ", ";
@@ -47,7 +50,6 @@ public class ArrayInt
         this.maximumSize = maximumSize;
         this.currentSize = currentSize;
     }
-
 
     public int get (int index) {
         if (index < 0 || index >= currentSize) {
@@ -69,16 +71,20 @@ public class ArrayInt
 
             }
         }
-
-        for (int i=0; i<array.length ; i=i+1){
-        }
         array[index]=value;
-        for (int i=0; i<array.length ; i=i+1){
 
-        }
         currentSize = currentSize + 1;
-        maximumSize = maximumSize +1;
 
     }
-}  
 
+    public void delete(int index) { 
+        //tienes que hacer el delete
+        if (index <= 0 || currentSize>=index) {
+            for (int i=index ; i<currentSize-1 ; i=i+1) {
+                System.out.println(i);
+                array[i] = array[i+1];
+            }
+            currentSize = currentSize -1;
+        }
+    }  
+} 
