@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=Queue
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=maximumSize
+comment2.target=Queue(int)
+comment3.params=value
+comment3.target=void\ join(java.lang.String)
+comment4.params=
+comment4.target=void\ leave()
+comment5.params=
+comment5.target=java.lang.String\ toString()
+comment6.params=
+comment6.target=boolean\ isEmpty()
+numComments=7

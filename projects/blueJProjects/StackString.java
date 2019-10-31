@@ -71,7 +71,7 @@ public class StackString {
         return result;
     }
 
-         public String pop () {
+    public String pop () {
         if (currentSize == 0) {
             System.out.println ("Error: No elements on stack");
             return "";

@@ -8,12 +8,12 @@ public class ArrayInt
 
         ArrayInt arr1 = new ArrayInt (10, 9);
         arr1.insert(99,3);
-  
+
         System.out.println ("Array 1: " + arr1);
         arr1.delete(3);
         System.out.println ("Array 1: " + arr1);
 
-        
+      
         ArrayInt arr2 = new ArrayInt (10, 5);
 
         System.out.println ("Array 2: " + arr2);

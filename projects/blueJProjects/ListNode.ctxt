@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.target=ListNode
+comment1.params=next\ data
+comment1.target=ListNode(ListNode,\ java.lang.String)
+comment10.params=data\ index
+comment10.target=ListNode\ insert(java.lang.String,\ int)
+comment2.params=
+comment2.target=java.lang.String\ getData()
+comment3.params=
+comment3.target=ListNode\ getNext()
+comment4.params=next
+comment4.target=void\ setNext(ListNode)
+comment5.params=
+comment5.target=void\ main()
+comment6.params=
+comment6.target=java.lang.String\ toString()
+comment7.params=data
+comment7.target=void\ join(java.lang.String)
+comment8.params=i
+comment8.target=java.lang.String\ get(int)
+comment9.params=data\ i
+comment9.target=void\ set(java.lang.String,\ int)
+numComments=11
