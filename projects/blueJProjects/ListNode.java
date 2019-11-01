@@ -41,6 +41,8 @@ public class ListNode
         System.out.println(myList);
         myList.insert("inserted item",2);
         System.out.println(myList);
+        myList.delete(0);
+        System.out.println(myList);
     }
 
     public String toString () {
@@ -126,16 +128,30 @@ public class ListNode
         throw new ArrayIndexOutOfBoundsException (index); // <6> 
 
     }
-    
-    public void delete(int i) {
+
+    // deletes node at given index number, and returns head of new list
+    public ListNode delete (int index) {
         ListNode current = this;
         int currentIndex = 0;
-        if (currentIndex==i) {
-            
-            
+
+        if (index == 0) { // delete first node, so just return the next node
+            return next;
         }
-       
-        
+
+        while (current != null) {
+            if (currentIndex+1 == index) {
+                // the node to delete is the next one
+                // so we set the current node's next to the next of the next
+                current.setNext ( current.getNext().getNext());
+
+                return this; // remember, the delete method was called on the first item
+            }
+            currentIndex += 1;
+            current = current.getNext ();
+        }
+        throw new ArrayIndexOutOfBoundsException (index);
     }
-    
+    //tienes que pulir el codigo y ver por que es diferente del profe
+    //testea varios numeros
+
 }

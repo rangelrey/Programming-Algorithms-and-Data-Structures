@@ -23,25 +23,14 @@ UTF-8
 /home/rangelrey/gitrepos/programming-algorithms-and-data-structures/projects/blueJProjects/ListNode.java
 <---- end of javadoc command ---->
 Loading source file /home/rangelrey/gitrepos/programming-algorithms-and-data-structures/projects/blueJProjects/ListNode.java...
-/home/rangelrey/gitrepos/programming-algorithms-and-data-structures/projects/blueJProjects/ListNode.java:28: error: class, interface, or enum expected
-    public String toString () {
-           ^
-/home/rangelrey/gitrepos/programming-algorithms-and-data-structures/projects/blueJProjects/ListNode.java:30: error: class, interface, or enum expected
-        result = result + "[";
-        ^
-/home/rangelrey/gitrepos/programming-algorithms-and-data-structures/projects/blueJProjects/ListNode.java:31: error: class, interface, or enum expected
-        ListNode current = this;
-        ^
-/home/rangelrey/gitrepos/programming-algorithms-and-data-structures/projects/blueJProjects/ListNode.java:32: error: class, interface, or enum expected
-        while (current != null) {
-        ^
-/home/rangelrey/gitrepos/programming-algorithms-and-data-structures/projects/blueJProjects/ListNode.java:35: error: class, interface, or enum expected
-        }
-        ^
-/home/rangelrey/gitrepos/programming-algorithms-and-data-structures/projects/blueJProjects/ListNode.java:38: error: class, interface, or enum expected
-        return result;
-        ^
-/home/rangelrey/gitrepos/programming-algorithms-and-data-structures/projects/blueJProjects/ListNode.java:39: error: class, interface, or enum expected
-    }
-    ^
-7 errors
+Constructing Javadoc information...
+Standard Doclet version 11.0.4
+Building tree for all the packages and classes...
+Generating /home/rangelrey/gitrepos/programming-algorithms-and-data-structures/projects/blueJProjects/doc/ListNode.html...
+Generating /home/rangelrey/gitrepos/programming-algorithms-and-data-structures/projects/blueJProjects/doc/package-summary.html...
+Generating /home/rangelrey/gitrepos/programming-algorithms-and-data-structures/projects/blueJProjects/doc/constant-values.html...
+Building index for all the packages and classes...
+Building index for all classes...
+Generating /home/rangelrey/gitrepos/programming-algorithms-and-data-structures/projects/blueJProjects/doc/allclasses.html...
+Generating /home/rangelrey/gitrepos/programming-algorithms-and-data-structures/projects/blueJProjects/doc/allclasses.html...
+Generating /home/rangelrey/gitrepos/programming-algorithms-and-data-structures/projects/blueJProjects/doc/index.html...
