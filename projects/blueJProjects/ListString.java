@@ -1,21 +1,22 @@
 public class ListString {
     private ListNode head;
 
-    public ListString (String data) {
-        this.head = new ListNode(null,data);
-    }
+
 
     public static void main() {
-        ListString miLista = new ListString("a");
-
+        ListString miLista = new ListString();
+        miLista.join("a");
         miLista.join("b");
         miLista.join("C");
 
         System.out.println(miLista);
-
-        miLista.leave();
+  
+        miLista.delete(2);
         System.out.println(miLista);
-        miLista.get(1);
+        
+        miLista.size();
+        
+        
     }
 
     // the constructor simply creates the class with a null value for "head"
@@ -30,9 +31,7 @@ public class ListString {
             head = new ListNode (null, data);
             return;                                   // <2>
         }
-
         ListNode current = head;                    // <3>
-
         // walk the list to find the last item
         while (current.getNext () != null) {
             current = current.getNext ();
@@ -69,11 +68,40 @@ public class ListString {
     }
 
     public void insert (String data, int index) {   // <4>
-        // COMPLETE THIS METHOD
+        if (head == null) {
+            throw new ArrayIndexOutOfBoundsException (index);
+        } else {
+            head.insert(data,index);
+        }
     }
 
     public void delete (int index) {
-        // COMPLETE THIS METHOD
+        if (head == null) {
+            throw new ArrayIndexOutOfBoundsException (index);
+        } else {
+            head.delete(index);
+        }
+    }
+
+    public void clear() {
+        if (head == null) {
+            return ;
+        }
+        else {
+            head = null;
+        }
+    }
+    
+    public int size() {
+        int i =1;
+      
+        while(head!=null) {
+
+            i +=1;
+            head =head.getNext();
+        }
+        System.out.println(i);
+        return i;
     }
 
     public String toString () {
