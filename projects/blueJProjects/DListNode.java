@@ -28,32 +28,19 @@ public class DListNode
 
         System.out.println("Starting list");
         DListNode myList = new DListNode (null,null,"0 item");
-        System.out.println(myList);
+  
         // Process the current item
         myList.join("1 Item");
         myList.join("2 Item");
         myList.join("3 Item");
-        System.out.println (myList);
+     
 
-        System.out.println("Starting list");
-        System.out.println(myList.get(0));
-        System.out.println(myList.get(1));
-        System.out.println(myList.get(3));
         
-        myList.set("0 item.0",0);
-        myList.set("1 item.1",1);
-        myList.set("2 item.2",2);
-        myList.set("3 item.3",3);
+      
         
-        System.out.println(myList);
-        
-        myList.insert("2.1 item",2);
-        myList.insert("0.1 item",0);
-        myList.insert("3.1 item",3);
-        
-        System.out.println(myList);
-        
-        myList.delete(2);
+        System.out.println("print all");
+        myList.printAll();
+ 
         
         
     }
@@ -77,6 +64,20 @@ public class DListNode
         return result;
     }
 
+    
+    public void  printAll() {
+     DListNode current = this;
+     while (current.next!=null) {
+         System.out.println("printing...");
+         System.out.println(current.previous);
+         System.out.println(current.next);
+         current = current.next;
+        }
+  
+    }
+    
+
+    
     public void join (String data) {
         DListNode current = this;
 
