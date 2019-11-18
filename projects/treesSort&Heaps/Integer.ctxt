@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=Integer
+comment1.params=
+comment1.target=int\ getIntValue()
+comment2.params=i
+comment2.target=boolean\ isLessThan(Integer)
+comment3.params=A\ B
+comment3.target=void\ test(char,\ char)
+comment4.params=
+comment4.target=void\ main()
+numComments=5

@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.target=Orderable
+comment1.params=o
+comment1.target=boolean\ isLessThan(java.lang.Object)
+numComments=2
