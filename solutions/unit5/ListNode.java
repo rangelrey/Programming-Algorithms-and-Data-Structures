@@ -1,37 +1,29 @@
+public class ListNode {
+    private ListNode next;
+    private String data;
 
-public class ListNodeAd
-{
-   private ListNodeAd next;
-   private Data data;
-
-
-    public ListNodeAd (ListNodeAd next,  Data data) {
+    public ListNode (ListNode next, String data) {
         this.next = next;
         this.data = data;
     }
 
     // accessor for 'next'
-    public ListNodeAd getNext () {
+    public ListNode getNext () {
         return next;
     }
 
     // mutator for 'next'
-    public void setNext (ListNodeAd next) {
+    public void setNext (ListNode next) {
         this.next = next;
     }
 
     // accessor for 'data' field
-    public Data getData () {
+    public String getData () {
         return data;
     }
-    
-    public String getOrigin() {
-        return data.getOrigin();
-    }
-    
 
-    public void join (Data data) {
-        ListNodeAd current = this;
+    public void join (String data) {
+        ListNode current = this;
 
         // walk the list to find the last item
         while (current.getNext () != null) {
@@ -39,11 +31,11 @@ public class ListNodeAd
         }
 
         // make a new node from data and place it in the lastItem
-        current.setNext (new ListNodeAd (null, data));             
+        current.setNext (new ListNode (null, data));              // <1>
     }
 
-    public Data get (int i) {
-        ListNodeAd current = this;
+    public String get (int i) {
+        ListNode current = this;
         int currentIndex = 0;
 
         while (current != null) {
@@ -56,8 +48,8 @@ public class ListNodeAd
         throw new ArrayIndexOutOfBoundsException (i); // <1>
     }
 
-    public void set (Data data, int i) {
-        ListNodeAd current = this;
+    public void set (String data, int i) {
+        ListNode current = this;
         int currentIndex = 0;
 
         while (current != null) {
@@ -71,20 +63,20 @@ public class ListNodeAd
         throw new ArrayIndexOutOfBoundsException (i); // <1>
     }
 
-    public ListNodeAd insert (Data data, int index) {
-        ListNodeAd current = this;
+    public ListNode insert (String data, int index) {
+        ListNode current = this;
         int currentIndex = 0;
         if (index < 0) { // check index is positive
             throw new ArrayIndexOutOfBoundsException (index);
         }
 
         if (index == 0) {  
-            return new ListNodeAd (current, data);
+            return new ListNode (current, data);
         }
 
         while (current != null) {
             if (currentIndex+1 == index) {                                 
-                ListNodeAd insertedNode = new ListNodeAd (current.getNext(), data); 
+                ListNode insertedNode = new ListNode (current.getNext(), data); 
                 current.next = insertedNode;                                    
                 return this;    
             }
@@ -95,8 +87,8 @@ public class ListNodeAd
     }
 
     // deletes node at given index number, and returns head of new list
-    public ListNodeAd delete (int index) {
-        ListNodeAd current = this;
+    public ListNode delete (int index) {
+        ListNode current = this;
         int currentIndex = 0;
 
         if (index == 0) { // delete first node, so just return the next node
@@ -120,15 +112,18 @@ public class ListNodeAd
     public String toString () {
         String result = "";
 
-        result = "Node: ";
-        ListNodeAd current = this;
+        result += "[";
+        ListNode current = this;
 
-       
-          result += current.data;
-          
-       
+        while (current != null) {
+            result += current.data;
+            if (current.next != null) {
+                result += ", ";
+            }
+            current = current.next;
+        }
 
-        
+        result += "]";
 
         return result;
     }

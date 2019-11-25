@@ -1,54 +1,53 @@
 
-public class ListNodeAd
+public class ChildNodeList
 {
-   private ListNodeAd next;
-   private Data data;
+   private ChildNodeList next;
+
+   private TreeNode treeNode;
 
 
-    public ListNodeAd (ListNodeAd next,  Data data) {
+    public ChildNodeList ( ChildNodeList next, TreeNode treeNode) {
         this.next = next;
-        this.data = data;
+
+        this.treeNode = treeNode;
+
     }
 
     // accessor for 'next'
-    public ListNodeAd getNext () {
+    public ChildNodeList getNext () {
         return next;
     }
 
     // mutator for 'next'
-    public void setNext (ListNodeAd next) {
+    public void setNext (ChildNodeList next) {
         this.next = next;
     }
-
-    // accessor for 'data' field
-    public Data getData () {
-        return data;
-    }
     
-    public String getOrigin() {
-        return data.getOrigin();
-    }
+  
     
+     public TreeNode getTreeNode () {
+        return treeNode;
+    }
 
-    public void join (Data data) {
-        ListNodeAd current = this;
+    public void join ( TreeNode treeNode) {
+        ChildNodeList current = this;
 
         // walk the list to find the last item
         while (current.getNext () != null) {
             current = current.getNext ();
         }
 
-        // make a new node from data and place it in the lastItem
-        current.setNext (new ListNodeAd (null, data));             
+        // make a new node from country and place it in the lastItem
+        current.setNext (new ChildNodeList (null, treeNode));             
     }
 
-    public Data get (int i) {
-        ListNodeAd current = this;
+    public TreeNode get (int i) {
+        ChildNodeList current = this;
         int currentIndex = 0;
 
         while (current != null) {
             if (currentIndex == i) {
-                return current.getData ();
+                return current.getTreeNode ();
             }
             currentIndex += 1;
             current = current.getNext ();
@@ -56,13 +55,13 @@ public class ListNodeAd
         throw new ArrayIndexOutOfBoundsException (i); // <1>
     }
 
-    public void set (Data data, int i) {
-        ListNodeAd current = this;
+    public void set (TreeNode treeNode, int i) {
+        ChildNodeList current = this;
         int currentIndex = 0;
 
         while (current != null) {
             if (currentIndex == i) {
-                current.data = data;
+                current.treeNode = treeNode;
                 return;
             }
             currentIndex += 1;
@@ -71,20 +70,20 @@ public class ListNodeAd
         throw new ArrayIndexOutOfBoundsException (i); // <1>
     }
 
-    public ListNodeAd insert (Data data, int index) {
-        ListNodeAd current = this;
+    public ChildNodeList insert (TreeNode treeNode, int index) {
+        ChildNodeList current = this;
         int currentIndex = 0;
         if (index < 0) { // check index is positive
             throw new ArrayIndexOutOfBoundsException (index);
         }
 
         if (index == 0) {  
-            return new ListNodeAd (current, data);
+            return new ChildNodeList (current, treeNode);
         }
 
         while (current != null) {
             if (currentIndex+1 == index) {                                 
-                ListNodeAd insertedNode = new ListNodeAd (current.getNext(), data); 
+                ChildNodeList insertedNode = new ChildNodeList (current.getNext(), treeNode); 
                 current.next = insertedNode;                                    
                 return this;    
             }
@@ -95,8 +94,8 @@ public class ListNodeAd
     }
 
     // deletes node at given index number, and returns head of new list
-    public ListNodeAd delete (int index) {
-        ListNodeAd current = this;
+    public ChildNodeList delete (int index) {
+        ChildNodeList current = this;
         int currentIndex = 0;
 
         if (index == 0) { // delete first node, so just return the next node
@@ -120,15 +119,18 @@ public class ListNodeAd
     public String toString () {
         String result = "";
 
-        result = "Node: ";
-        ListNodeAd current = this;
+        result += "[";
+        ChildNodeList current = this;
 
-       
-          result += current.data;
-          
-       
+        while (current != null) {
+            result += current.treeNode;
+            if (current.next != null) {
+                result += ", ";
+            }
+            current = current.next;
+        }
 
-        
+        result += "]";
 
         return result;
     }

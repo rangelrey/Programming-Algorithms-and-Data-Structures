@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=ListString
+comment1.params=
+comment1.target=ListString()
+comment2.params=data
+comment2.target=void\ join(java.lang.String)
+comment3.params=
+comment3.target=java.lang.String\ leave()
+comment4.params=index
+comment4.target=java.lang.String\ get(int)
+comment5.params=data\ index
+comment5.target=void\ set(java.lang.String,\ int)
+comment6.params=data\ index
+comment6.target=void\ insert(java.lang.String,\ int)
+comment7.params=index
+comment7.target=void\ delete(int)
+comment8.params=
+comment8.target=java.lang.String\ toString()
+numComments=9

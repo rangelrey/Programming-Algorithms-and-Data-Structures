@@ -18,7 +18,7 @@ public class Graph<T> {
     public boolean isEulerian () {
         for (int i=0; i<nodes.size(); i+=1) {
             GNode<T> node = nodes.get (i);
-            if (!node.isEven ()) {
+            if (!node.isEven () && !this.isConnected()) {
                 return false;
             }
         }
