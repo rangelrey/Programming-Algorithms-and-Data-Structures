@@ -46,41 +46,45 @@ public class TreeNode {
         int numberOfChildsChecked = 0;
         int numberOfChildren =0;
         boolean lastChildren = true;
-        while (currentAdListNode!=null    && lastChildren==true) {
-            TreeNode currentTreeNode = this;
+        boolean ListNodeAdWasAdded = false;
+        while (currentAdListNode!=null    && lastChildren==true && ListNodeAdWasAdded != true) {
             lastChildren=false;
-            System.out.println(" Current AdNode: "+currentAdListNode.getData());
+            TreeNode currentTreeNode = this;
+            System.out.println(" \nCurrent AdNode: "+currentAdListNode.getData());
             origin = currentAdListNode.getOrigin();
             System.out.println(" Origin: "+origin);
-
             System.out.println(" OriginToCompare :" +currentTreeNode.getCountry());
             if (origin == currentTreeNode.getCountry()) {
                 currentTreeNode.joinToTreeNodeList(currentAdListNode.getData());
                 System.out.println("  Joined!!!!!!!!!!!!!!!!!!!!!!!");
                 countLimit++;
+                ListNodeAdWasAdded = true;
                 if (countLimit > limit) {
                     System.out.println("LIMIT EXCEEDED!!!!!");
                     itemsFitInTreeNodeList = false;
                     currentTreeNode.getAdList().reset();  
                     break;}}
+                    
             numberOfChildren = currentTreeNode.getChildList().size();
             System.out.println("number of children: "+ numberOfChildren);
             if (numberOfChildren >0) {
                 System.out.println(" Checking CHILDREN,...");
                 for (i=0; i<numberOfChildren; i++){
+                    if (ListNodeAdWasAdded == false) {
                     System.out.println("currentTreeNode is: "+currentTreeNode.getCountry());
-                    currentTreeNode = currentTreeNode.getChildList().get(i);
-                    System.out.println("Checking the child node: "+currentTreeNode.getCountry());
-                    currentTreeNode.itemsFitInTreeNodeList( currentAdListNode,countLimit,limit); 
+                    child = currentTreeNode.getChildList().get(i);
+                    System.out.println("Checking the child node: "+child.getCountry());
+                    child.itemsFitInTreeNodeList( currentAdListNode,countLimit,limit); 
                     if (i+1==numberOfChildren) {
-                        System.out.println("   Checking the last children");
+                        System.out.println("   Checking the last children \n");
                         lastChildren = true;}
                     else {lastChildren = false;}
-                } //el problema es que currentNode se updatea con el ultimo nodo que no tiene children y cuando el loop de antes sigue runeando el valor de
+                } }//el problema es que currentNode se updatea con el ultimo nodo que no tiene children y cuando el loop de antes sigue runeando el valor de
                 //currentNode ...
 
             } if (lastChildren ==true){
                 System.out.println("    Last children was checked");
+                ListNodeAdWasAdded = false;
                 currentAdListNode = currentAdListNode.getNext();
             System.out.println("\n \nStarting with new adlistnode");}
             
