@@ -1,7 +1,19 @@
 #BlueJ class context
 comment0.target=arr
-comment1.params=a\ x
-comment1.target=int\ search(int[],\ int)
-comment2.params=
-comment2.target=void\ main()
-numComments=3
+comment1.params=maxSize\ currentSize
+comment1.target=arr(int,\ int)
+comment2.params=i
+comment2.target=int\ get(int)
+comment3.params=
+comment3.target=int\ size()
+comment4.params=value\ index
+comment4.target=void\ set(int,\ int)
+comment5.params=index
+comment5.target=void\ delete(int)
+comment6.params=a\ x
+comment6.target=int\ search(int[],\ int)
+comment7.params=a\ t
+comment7.target=int\ findSmallest(int[],\ int)
+comment8.params=numbers\ i1\ i2
+comment8.target=void\ swap(int[],\ int,\ int)
+numComments=9

@@ -1,0 +1,27 @@
+#BlueJ class context
+comment0.target=TreeNode
+comment1.params=country\ finalTreeNodeList\ childList\ parent
+comment1.target=TreeNode(java.lang.String,\ AdList,\ ChildList,\ TreeNode)
+comment10.params=currentAdListNode
+comment10.target=boolean\ assignAdListNode(ListNodeAd)
+comment11.params=currentAdListNode
+comment11.target=boolean\ assignListNodesToTreeNodesReserva(ListNodeAd)
+comment12.params=
+comment12.target=void\ displayTreeNode()
+comment2.params=
+comment2.target=java.lang.String\ getCountry()
+comment3.params=
+comment3.target=TreeNode\ getParent()
+comment4.params=
+comment4.target=AdList\ getAdList()
+comment5.params=
+comment5.target=ChildList\ getChildList()
+comment6.params=i
+comment6.target=TreeNode\ getChild(int)
+comment7.params=child
+comment7.target=void\ joinChild(TreeNode)
+comment8.params=ad
+comment8.target=void\ joinToTreeNodeList(Data)
+comment9.params=
+comment9.target=void\ showTreeNode()
+numComments=13

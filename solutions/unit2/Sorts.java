@@ -50,12 +50,13 @@ public class Sorts {
 
         for (int current = smallest; current < array.length; current += 1) {
             if (array[current] < array[smallest]) {
+                System.out.println(current);
                 smallest = current;
             }
         }
 
         return smallest;
-    }
+    }      
 
     public static void insertionSort (int[] numbers) {
         int t;

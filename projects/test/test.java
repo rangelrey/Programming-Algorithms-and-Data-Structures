@@ -1,16 +1,22 @@
-
-/**
- * Write a description of class test here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
 public class test
 {
     public static void main() {
      
-    Circle c = new Circle("blue",2);    
-    System.out.println(c.getColour());    
-        
+
+    
+    stack a = new stack(4);
+    a.push("a");
+    a.push("b");
+    a.push("c");    
+    a.push("d");
+    
+    System.out.println(a);
+    
+    System.out.println(a.pop());
     }
+    
+    
+   
+    
+    
 }

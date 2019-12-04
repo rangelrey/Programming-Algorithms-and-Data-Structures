@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=stack
+comment1.params=maximumSize
+comment1.target=stack(int)
+comment2.params=toAdd
+comment2.target=void\ push(java.lang.String)
+comment3.params=
+comment3.target=java.lang.String\ pop()
+comment4.params=
+comment4.target=java.lang.String\ toString()
+numComments=5

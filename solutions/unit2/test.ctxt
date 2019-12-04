@@ -2,4 +2,6 @@
 comment0.target=test
 comment1.params=
 comment1.target=void\ main()
-numComments=2
+comment2.params=a
+comment2.target=int\ factorial(int)
+numComments=3
