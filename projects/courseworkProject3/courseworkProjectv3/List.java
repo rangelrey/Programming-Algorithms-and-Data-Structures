@@ -1,18 +1,18 @@
-public class AdList {
-    private ListNodeAd head;
-    private Data data;
+public class List<T> {
+    private ListNode<T> head;
+    private T item;
 
     // the constructor simply creates the class with a null value for "head"
-    public AdList () {
+    public List () {
         head = null;
     }
 
-    public ListNodeAd getListNodeAd() {
+    public ListNode<T> getListNode() {
         return this.head;
         
     }
     
-    public ListNodeAd next() {return this.getListNodeAd().getNext();}
+    public ListNode<T>next() {return this.getListNode().getNext();}
     
     
     // the list is empty if it starts with null
@@ -22,7 +22,7 @@ public class AdList {
 
     public int size () {
         int count = 0;
-        ListNodeAd current = head;
+        ListNode<T>current = head;
         while (current != null) {
             count += 1;
             current = current.getNext ();
@@ -30,10 +30,10 @@ public class AdList {
         return count;
     }
 
-    public boolean contains (Data data) {
-        ListNodeAd current = head;
+    public boolean contains (T item) {
+        ListNode<T>current = head;
         while (current != null) {
-            if (current.getData().equals(data)) {
+            if (current.getItem().equals(item)) {
                 return true;
             }
             current = current.getNext ();
@@ -41,42 +41,42 @@ public class AdList {
         return false;
     }
 
-    // the join method creates a new ListNodeAd for the given item of data
+    // the join method creates a new ListNode<T>for the given item of item
     // and appends the new item to the end of the list
-    public  void join (Data data) {
+    public  void join (T item) {
         if (head == null) {                         // <1>
-            head = new ListNodeAd (null, data);
+            head = new ListNode<T>(null, item);
             return;                                   // <2>
         }
 
-        ListNodeAd current = head;                    // <3>
+        ListNode<T>current = head;                    // <3>
 
         // walk the list to find the last item
         while (current.getNext () != null) {
             current = current.getNext ();
         }
 
-        // make a new node from data and place it in the lastItem
-        current.setNext (new ListNodeAd (null, data));
+        // make a new node from item and place it in the lastItem
+        current.setNext (new ListNode<T>(null, item));
     }
 
-    public Data leave () {
+    public T leave () {
         if (head == null) {
             return null;
         } else {
-            Data result = head.getData ();
+            T result = head.getItem ();
             head = head.getNext ();
             return result;
         }
     }
 
-    public Data get (int index) {
-        ListNodeAd current = head;
+    public T get (int index) {
+        ListNode<T> current = head;
         int currentIndex = 0;
 
         while (current != null) {
             if (currentIndex == index) {
-                return current.getData ();
+                return current.getItem ();
             }
             currentIndex += 1;
             current = current.getNext ();
@@ -84,13 +84,13 @@ public class AdList {
         throw new ArrayIndexOutOfBoundsException (index);
     }
 
-    public void set (Data data, int index) {
-        ListNodeAd current = head;
+    public void set (T item, int index) {
+        ListNode<T>current = head;
         int currentIndex = 0;
 
         while (current != null) {
             if (currentIndex == index) {
-                current.set(data, index) ;
+                current.set(item, index) ;
                 return;
             }
             currentIndex += 1;
@@ -99,21 +99,21 @@ public class AdList {
         throw new ArrayIndexOutOfBoundsException (index); 
     }
 
-    public void insert (Data data, int index) {   
+    public void insert (T item, int index) {   
 
         if (index < 0) { // check index is positive
             throw new ArrayIndexOutOfBoundsException (index);
         }
 
         if (index == 0) {   // set a new first item in list
-            head = new ListNodeAd (head, data);
+            head = new ListNode<T>(head, item);
         }
 
-        ListNodeAd current = head;
+        ListNode<T>current = head;
         int currentIndex = 0;
         while (current != null) {
             if (currentIndex+1 == index) {   
-                ListNodeAd insertedNode = new ListNodeAd (current.getNext(), data); 
+                ListNode<T>insertedNode = new ListNode<T>(current.getNext(), item); 
                current.setNext(insertedNode);   
                 return; 
             }
@@ -130,7 +130,7 @@ public class AdList {
             return;
         }
 
-        ListNodeAd current = head;
+        ListNode<T>current = head;
         int currentIndex = 0;
         while (current != null) {
             if (currentIndex+1 == index) {
@@ -149,20 +149,20 @@ public class AdList {
     // version of delete which deletes a node containing the given 'item'
     // -- it follows the pattern above closely, but matches the value, 
     //    not the index
-    public void deleteItem (ListNodeAd listNodeAd) {
-        System.out.println("head: "+head.getData());
-        System.out.println("to Remove: "+listNodeAd.getData());
-        if (head.getData().equals (listNodeAd.getData())) { // delete the first item
-            System.out.print("deleting: "+head.getData());
+    public void deleteItem (ListNode<T>ListNode) {
+        System.out.println("head: "+head.getItem());
+        System.out.println("to Remove: "+ListNode.getItem());
+        if (head.getItem().equals (ListNode.getItem())) { // delete the first item
+            System.out.print("deleting: "+head.getItem());
             head = head.getNext ();
             System.out.println(head);
             return;
         }
 
-        ListNodeAd current = head;
+        ListNode<T>current = head;
         while (current != null) {
 
-            if (current.getNext().getData().equals(listNodeAd.getData())) {
+            if (current.getNext().getItem().equals(ListNode.getItem())) {
          
                 
                 current.setNext (current.getNext().getNext());
@@ -178,10 +178,10 @@ public class AdList {
         String result = "";
 
         result += "[";
-        ListNodeAd current = head;
+        ListNode<T>current = head;
 
         while (current != null) {
-            result += current.getData();
+            result += current.getItem();
             if (current.getNext() != null) {
                 result += ", ";
             }
@@ -198,9 +198,9 @@ public class AdList {
          
     }
     
-    public void deleteSubList( AdList subListToDelete) {
-        ListNodeAd current;
-        current = subListToDelete.getListNodeAd();
+    public void deleteSubList( List subListToDelete) {
+        ListNode<T>current;
+        current = subListToDelete.getListNode();
         while( current!=null) {
 
         
@@ -213,9 +213,9 @@ public class AdList {
     }
 }
     
-    public void showAdList(){
-        if (this.getListNodeAd()!=null){
-      this.getListNodeAd().showListNodeAd(); 
+    public void showList(){
+        if (this.getListNode()!=null){
+      this.getListNode().showListNode(); 
     }
         
     }

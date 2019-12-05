@@ -1,54 +1,49 @@
 
-public class ListNodeAd
+public class ListNode<T>
 {
-   private ListNodeAd next;
-   private Data data;
+    private ListNode<T> next;
+    private T item;
 
-
-    public ListNodeAd (ListNodeAd next,  Data data) {
+    public ListNode (ListNode<T> next,  T item) {
         this.next = next;
-        this.data = data;
+        this.item = item;
     }
 
     // accessor for 'next'
-    public ListNodeAd getNext () {
+    public ListNode<T> getNext () {
         return next;
     }
 
     // mutator for 'next'
-    public void setNext (ListNodeAd next) {
+    public void setNext (ListNode<T> next) {
         this.next = next;
     }
 
-    // accessor for 'data' field
-    public Data getData () {
-        return data;
+    // accessor for 'item' field
+    public T getItem () {
+        return item;
     }
-    
-    public String getOrigin() {
-        return data.getOrigin();
-    }
-    
 
-    public void join (Data data) {
-        ListNodeAd current = this;
+    
+    public void join (T item) {
+        ListNode current = this;
 
         // walk the list to find the last item
         while (current.getNext () != null) {
             current = current.getNext ();
         }
 
-        // make a new node from data and place it in the lastItem
-        current.setNext (new ListNodeAd (null, data));             
+        // make a new node from item and place it in the lastItem
+        current.setNext (new ListNode (null, item));             
     }
 
-    public Data get (int i) {
-        ListNodeAd current = this;
+    public ListNode<T> get (int i) {
+        ListNode current = this;
         int currentIndex = 0;
 
         while (current != null) {
             if (currentIndex == i) {
-                return current.getData ();
+                return current;
             }
             currentIndex += 1;
             current = current.getNext ();
@@ -56,13 +51,13 @@ public class ListNodeAd
         throw new ArrayIndexOutOfBoundsException (i); // <1>
     }
 
-    public void set (Data data, int i) {
-        ListNodeAd current = this;
+    public void set (T item, int i) {
+        ListNode current = this;
         int currentIndex = 0;
 
         while (current != null) {
             if (currentIndex == i) {
-                current.data = data;
+                current.item = item;
                 return;
             }
             currentIndex += 1;
@@ -71,20 +66,20 @@ public class ListNodeAd
         throw new ArrayIndexOutOfBoundsException (i); // <1>
     }
 
-    public ListNodeAd insert (Data data, int index) {
-        ListNodeAd current = this;
+    public ListNode insert (T item, int index) {
+        ListNode current = this;
         int currentIndex = 0;
         if (index < 0) { // check index is positive
             throw new ArrayIndexOutOfBoundsException (index);
         }
 
         if (index == 0) {  
-            return new ListNodeAd (current, data);
+            return new ListNode (current, item);
         }
 
         while (current != null) {
             if (currentIndex+1 == index) {                                 
-                ListNodeAd insertedNode = new ListNodeAd (current.getNext(), data); 
+                ListNode insertedNode = new ListNode (current.getNext(), item); 
                 current.next = insertedNode;                                    
                 return this;    
             }
@@ -95,8 +90,8 @@ public class ListNodeAd
     }
 
     // deletes node at given index number, and returns head of new list
-    public ListNodeAd delete (int index) {
-        ListNodeAd current = this;
+    public ListNode delete (int index) {
+        ListNode current = this;
         int currentIndex = 0;
 
         if (index == 0) { // delete first node, so just return the next node
@@ -119,31 +114,24 @@ public class ListNodeAd
 
     public String toString () {
         String result = "";
-
-        result = "Node: ";
-        ListNodeAd current = this;
-
-       
-          result += current.data;
-          
-       
-
-        
-
-        return result;
-    }
-    
-    public void showListNodeAd(){
-        ListNodeAd current = this;
+        ListNode current = this;
         while (current!=null){
-            
-            
-            System.out.println(" - "+current.getData());
+
+            result +=" - "+current.getItem()+"\n";
             current = current.getNext();
         }
-        
+        return result;
     }
-    
-    
+
+    public void showListNode(){
+        ListNode current = this;
+        while (current!=null){
+
+            System.out.println(" - "+current.getItem());
+            current = current.getNext();
+        }
+
+    }
+
     
 }

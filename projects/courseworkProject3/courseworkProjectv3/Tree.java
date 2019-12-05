@@ -10,19 +10,21 @@ public class Tree
     }
 
     public TreeNode getTreeNode() {
+        
+   
         return this.head;
     }
 
-    public AdList getAdListFromTreeNode(){ return this.getTreeNode().getAdList();}
+    public List getAdListFromTreeNode(){ return this.getTreeNode().getAdList();}
 
     public void showTree(){
         this.getTreeNode().showTreeNode();
 
     }
 
-    public void classifyAds(AdList startingList){
+    public void classifyAds(List startingList){
         
-        ListNodeAd currentListNodeAd = startingList.getListNodeAd();
+        ListNode currentListNodeAd = startingList.getListNode();
         while (currentListNodeAd!=null){
             this.classifyAd(currentListNodeAd);
             currentListNodeAd = currentListNodeAd.getNext();
@@ -30,7 +32,7 @@ public class Tree
         
     }
     
-    public void  classifyAd(ListNodeAd adListNode ) {
+    public void  classifyAd(ListNode adListNode ) {
         TreeNode currentTreeNode = this.getTreeNode();
         if (currentTreeNode==null){  System.out.println("The Tree Head is null");
             return;}
@@ -40,7 +42,7 @@ public class Tree
     }
    
     public void groupAds(int limit){
-        
+ 
        TreeNode currentTreeNode = this.getTreeNode();
        if (currentTreeNode!=null){
        currentTreeNode.groupAdsInTreeNode(limit);

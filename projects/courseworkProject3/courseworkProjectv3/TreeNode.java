@@ -1,12 +1,12 @@
 public class TreeNode {
 
-    private ChildList childList;
-    private AdList finalTreeNodeList;
+    private List childList;
+    private List finalTreeNodeList;
     private TreeNode child;
     private String country;
     private TreeNode parent;
 
-    public TreeNode ( String country, AdList finalTreeNodeList,ChildList childList, TreeNode parent) {
+    public TreeNode ( String country, List finalTreeNodeList,List childList, TreeNode parent) {
 
         this.finalTreeNodeList = finalTreeNodeList;
         this.childList = childList;
@@ -20,12 +20,12 @@ public class TreeNode {
 
     public TreeNode getParent(){return parent;}
 
-    public AdList getAdList () { return finalTreeNodeList; }
+    public List getAdList() { return finalTreeNodeList; }
 
-    public ChildList getChildList () { return childList; }
+    public List getChildList () { return childList; }
 
     public TreeNode getChild(int i) {
-        child = childList.get(i);
+        child = (TreeNode) childList.get(i);
         return child;
     }
 
@@ -46,57 +46,56 @@ public class TreeNode {
         TreeNode currentTreeNode = this;
         System.out.println(currentTreeNode.getCountry());
 
-        ChildList childList  =  currentTreeNode.getChildList();
+        List childList  =  currentTreeNode.getAdList();
         int numberOfChildren = childList.size();
 
         for (int i=0; i<numberOfChildren; i++){
             System.out.println("ja");
-            TreeNode child = childList.get(i);
+            TreeNode child = (TreeNode) childList.get(i);
             child.showTreeNode();
 
         }
 
     }
 
-    public boolean assignAdListNode(ListNodeAd currentAdListNode) {
-        boolean joined=false;
+    public void assignAdListNode(ListNode currentAdListNode) {
+  
 
         TreeNode currentTreeNode = this;
-        String origin = currentAdListNode.getOrigin();
+        Data data = (Data) currentAdListNode.getItem();
+        String origin = data.getOrigin();
 
         if (origin == currentTreeNode.getCountry()) {
-            currentTreeNode.joinToTreeNodeList(currentAdListNode.getData());
-            System.out.println("   !!!!!!!!!!!!!!!!!!!!!!Joined!!!!!!!!!!!!!!!!!!!!!!!");
-            return true;
+            currentTreeNode.joinToTreeNodeList(data);
+            return;
         }
         else {
-            ChildList childList = currentTreeNode.getChildList();
+            List childList = currentTreeNode.getChildList();
             int numberOfChildren = childList.size();
-            System.out.println("   number of children: "+ numberOfChildren);
 
             for (int i=0; i<numberOfChildren; i++){
-                child = childList.get(i);
+                child = (TreeNode) childList.get(i);
 
-                joined = child.assignAdListNode( currentAdListNode);
+                child.assignAdListNode( currentAdListNode);
 
                 // el loop se queda en allado con europs debido al las children
-            }} return joined;} 
+            }} } 
 
     public int AdListSize(){
-        int numberOfItemsInAdList = this.getAdList().size();
+        int numberOfItemsInAdList= this.getAdList().size();
         return numberOfItemsInAdList;
     }
 
     public int countAdsInNodeAndChidren(){
 
         TreeNode currentTreeNode = this;
-        int numberOfItemsInAdList = currentTreeNode.AdListSize();
+        int numberOfItemsInAdList= currentTreeNode.AdListSize();
 
-        ChildList childList = currentTreeNode.getChildList();
+        List childList = currentTreeNode.getChildList();
         int numberOfChildren = childList.size();
         for (int i=0; i<numberOfChildren; i++){
 
-            child = childList.get(i);
+            child = (TreeNode) childList.get(i);
 
             numberOfItemsInAdList += child.countAdsInNodeAndChidren();
 
@@ -106,7 +105,7 @@ public class TreeNode {
     }
 
     public boolean limitExceeded(int limit){
-        int numberOfItemsInAdListNode = this.countAdsInNodeAndChidren();
+        int numberOfItemsInAdListNode= this.countAdsInNodeAndChidren();
         if (numberOfItemsInAdListNode > limit){
             return true;
         }
@@ -118,11 +117,11 @@ public class TreeNode {
 
         if (currentTreeNode.limitExceeded(limit) == true){
 
-            ChildList childList = currentTreeNode.getChildList();
+            List childList = currentTreeNode.getChildList();
             int numberOfChildren = childList.size();
             for (int i=0; i<numberOfChildren; i++){
 
-                child = childList.get(i);
+                child = (TreeNode) childList.get(i);
 
                 child.groupAdsInTreeNode(limit);
 
@@ -139,13 +138,13 @@ public class TreeNode {
     public void showAllAdListsOfNodeAndChildren(){
         TreeNode currentTreeNode = this;
         if (currentTreeNode!=null){
-            currentTreeNode.getAdList().showAdList();
+            currentTreeNode.getAdList().showList();
 
-            ChildList childList = currentTreeNode.getChildList();
+            List childList = currentTreeNode.getChildList();
             int numberOfChildren = childList.size();
             for (int i=0; i<numberOfChildren; i++){
 
-                child = childList.get(i);
+                child = (TreeNode) childList.get(i);
 
                 child.showAllAdListsOfNodeAndChildren();
 
@@ -154,17 +153,18 @@ public class TreeNode {
 
     }
 
+    public void displayTreeNode() {
+        int i;
 
+        System.out.println(this.getCountry() +": "+this.getAdList());
 
-public void displayTreeNode() {
-int i;
+        for (i=0; i<this.getChildList().size(); i++){
+            TreeNode node = (TreeNode) this.getAdList().get(i);
+            node.displayTreeNode();
 
-System.out.println(this.getCountry() +": "+this.getAdList());
+        }
 
-for (i=0; i<this.getChildList().size(); i++){
-this.getChildList().get(i).displayTreeNode();
-
-}
-
-}
+    }
+    
+    
 }

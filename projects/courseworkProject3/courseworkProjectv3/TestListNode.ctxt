@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=TestListNode
+comment1.params=
+comment1.target=void\ main()
+comment2.params=
+comment2.target=void\ testToString()
+comment3.params=result\ expected
+comment3.target=void\ testEqualStrings(java.lang.String,\ java.lang.String)
+numComments=4

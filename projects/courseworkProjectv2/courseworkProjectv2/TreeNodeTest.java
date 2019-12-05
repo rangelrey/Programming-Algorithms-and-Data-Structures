@@ -1,7 +1,7 @@
 
-public class Test
+public class TreeNodeTest
 {
-    public static void main() {
+   public static void main() {
 
         Data ad0 = new Data("UK", "FR", "ad0text");   
         Data ad1 = new Data("FR", "UK", "ad1text");
@@ -12,13 +12,13 @@ public class Test
         Data ad6 = new Data("UK", "BE", "ad6text"); 
         Data ad7 = new Data("UK", "FR", "ad7text"); 
         Data ad8 = new Data("UK", "UK", "ad8text"); 
-        Data ad9 = new Data("UK", "UK", "ad9text"); 
-        Data ad10 = new Data("UK", "NL", "ad10text"); 
-        Data ad11 = new Data("UK", "NL", "ad11text"); 
-        Data ad12 = new Data("UK", "IR", "ad12text"); 
-        Data ad13 = new Data("UK", "UK", "ad13text"); 
-        Data ad14 = new Data("IN", "IN", "ad14text"); 
-        Data ad15 = new Data("UK", "UK", "ad15text"); 
+        Data ad9 = new Data("Europe", "Europe", "ad9text"); 
+        Data ad10 = new Data("Europe", "Europe", "ad10text"); 
+        Data ad11 = new Data("Europe", "Europe", "ad11text"); 
+        Data ad12 = new Data("Europe", "Europe", "ad12text"); 
+        Data ad13 = new Data("America", "America", "ad13text"); 
+        Data ad14 = new Data("Asia", "Asia", "ad14text"); 
+        Data ad15 = new Data("Asia", "Asia", "ad15text"); 
 
         AdList startingList = new AdList();
         AdList worldList = new AdList();
@@ -91,27 +91,13 @@ public class Test
         europeChildList.join(be);
         europeChildList.join(nl);
         europeChildList.join(uk);
+        
+        
+         System.out.println(uk.AdListSize());
+        
+        System.out.println(uk.countAdsInNodeAndChidren());
 
         
 
-      
-
-      
-
-        Tree tree = new Tree(world);
-
-        tree.classifyAds(startingList);
-        //tree.classifyAd(startingList.getListNodeAd(), 20);
-        
-        world.displayTreeNode();
-
-        //System.out.println(europe.getParent().getCountry());
-        System.out.println("\nPrinting result:");
-        tree.groupAds(14);
-
-      
-        //tree.showTree();
-
-     
-    }
+}
 }
