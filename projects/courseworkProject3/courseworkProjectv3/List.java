@@ -85,12 +85,12 @@ public class List<T> {
     }
 
     public void set (T item, int index) {
-        ListNode<T>current = head;
+        ListNode<T> current = head;
         int currentIndex = 0;
 
         while (current != null) {
             if (currentIndex == index) {
-                current.set(item, index) ;
+                current.item = item; ;
                 return;
             }
             currentIndex += 1;

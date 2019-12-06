@@ -3,22 +3,21 @@ public class TreeNode {
     private List childList;
     private List finalTreeNodeList;
     private TreeNode child;
-    private String country;
-    private TreeNode parent;
-
-    public TreeNode ( String country, List finalTreeNodeList,List childList, TreeNode parent) {
+    private String region;
+    
+    public TreeNode ( String region, List finalTreeNodeList,List childList) {
 
         this.finalTreeNodeList = finalTreeNodeList;
         this.childList = childList;
-        this.country = country;
-        this.parent = parent;
+        this.region = region;
+
 
     }
 
     // these are accessor methods, one per field
-    public String getCountry(){return country;}
+    public String getRegion(){return region;}
 
-    public TreeNode getParent(){return parent;}
+
 
     public List getAdList() { return finalTreeNodeList; }
 
@@ -35,7 +34,7 @@ public class TreeNode {
 
     }
 
-    public void joinToTreeNodeList(Data ad){
+    public void joinToAdList(Data ad){
 
         this.getAdList().join(ad);
 
@@ -44,7 +43,7 @@ public class TreeNode {
     public void showTreeNode(){
 
         TreeNode currentTreeNode = this;
-        System.out.println(currentTreeNode.getCountry());
+        System.out.println(currentTreeNode.getRegion());
 
         List childList  =  currentTreeNode.getAdList();
         int numberOfChildren = childList.size();
@@ -63,10 +62,10 @@ public class TreeNode {
 
         TreeNode currentTreeNode = this;
         Data data = (Data) currentAdListNode.getItem();
-        String origin = data.getOrigin();
+        String region = data.getRegion();
 
-        if (origin == currentTreeNode.getCountry()) {
-            currentTreeNode.joinToTreeNodeList(data);
+        if (region.equals(currentTreeNode.getRegion())) {
+            currentTreeNode.joinToAdList(data);
             return;
         }
         else {
@@ -78,10 +77,10 @@ public class TreeNode {
 
                 child.assignAdListNode( currentAdListNode);
 
-                // el loop se queda en allado con europs debido al las children
+                
             }} } 
 
-    public int AdListSize(){
+    public int adListSize(){
         int numberOfItemsInAdList= this.getAdList().size();
         return numberOfItemsInAdList;
     }
@@ -89,7 +88,7 @@ public class TreeNode {
     public int countAdsInNodeAndChidren(){
 
         TreeNode currentTreeNode = this;
-        int numberOfItemsInAdList= currentTreeNode.AdListSize();
+        int numberOfItemsInAdList= currentTreeNode.adListSize();
 
         List childList = currentTreeNode.getChildList();
         int numberOfChildren = childList.size();
@@ -128,7 +127,7 @@ public class TreeNode {
             }
         }
         else {
-            System.out.println("\n"+currentTreeNode.getCountry());
+            System.out.println("\n"+currentTreeNode.getRegion());
             currentTreeNode.showAllAdListsOfNodeAndChildren();
 
         }
@@ -156,7 +155,7 @@ public class TreeNode {
     public void displayTreeNode() {
         int i;
 
-        System.out.println(this.getCountry() +": "+this.getAdList());
+        System.out.println(this.getRegion() +": "+this.getAdList());
 
         for (i=0; i<this.getChildList().size(); i++){
             TreeNode node = (TreeNode) this.getAdList().get(i);

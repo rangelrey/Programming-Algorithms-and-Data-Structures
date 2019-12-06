@@ -1,13 +1,11 @@
 #BlueJ class context
 comment0.target=Data
-comment1.params=origin\ destination\ ad
-comment1.target=Data(java.lang.String,\ java.lang.String,\ java.lang.String)
+comment1.params=region\ adText
+comment1.target=Data(java.lang.String,\ java.lang.String)
 comment2.params=
-comment2.target=java.lang.String\ getOrigin()
+comment2.target=java.lang.String\ getRegion()
 comment3.params=
-comment3.target=java.lang.String\ getDestination()
+comment3.target=java.lang.String\ getAdText()
 comment4.params=
-comment4.target=java.lang.String\ getAd()
-comment5.params=
-comment5.target=java.lang.String\ toString()
-numComments=6
+comment4.target=java.lang.String\ toString()
+numComments=5

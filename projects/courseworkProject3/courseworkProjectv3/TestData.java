@@ -3,16 +3,20 @@ public class TestData
 {
     public static void main(){
 
-        Data ad0 = new Data("UK", "FR", "ad0text");   
-        Data ad1 = new Data("FR", "UK", "ad1text");
         
+        //Class instantiation. We create 2 Data Objects i.e 2 ads
+        Data ad0 = new Data("UK","ad0text");   
+        Data ad1 = new Data("FR","ad1text");
         
-        testEqualStrings(ad0.getOrigin(),"UK");
+        //Check if get methods work properly:
+        testEqualStrings(ad0.getRegion(),"UK");
+        
+        testEqualStrings(ad1.getAdText(),"ad1text");
 
     }
 
     public static void testEqualStrings (String result, String expected) {
-        if (result.equals (expected)) {   // Strings are objects, so use the equals method
+        if (result.equals (expected)) {   
             System.out.println("Test was successful!");
 
         } else {

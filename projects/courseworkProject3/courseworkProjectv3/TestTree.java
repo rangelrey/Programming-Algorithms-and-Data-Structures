@@ -3,22 +3,22 @@ public class TestTree
 {
     public static void main() {
 
-        Data ad0 = new Data("UK", "FR", "ad0text");   
-        Data ad1 = new Data("FR", "UK", "ad1text");
-        Data ad2 = new Data("FR", "BE", "ad2text");
-        Data ad3 = new Data("US", "US", "ad3text");
-        Data ad4 = new Data("IN", "IN", "ad4text");
-        Data ad5 = new Data("US", "US", "ad5text");
-        Data ad6 = new Data("UK", "BE", "ad6text"); 
-        Data ad7 = new Data("UK", "FR", "ad7text"); 
-        Data ad8 = new Data("UK", "UK", "ad8text"); 
-        Data ad9 = new Data("UK", "UK", "ad9text"); 
-        Data ad10 = new Data("UK", "NL", "ad10text"); 
-        Data ad11 = new Data("UK", "NL", "ad11text"); 
-        Data ad12 = new Data("UK", "IR", "ad12text"); 
-        Data ad13 = new Data("UK", "UK", "ad13text"); 
-        Data ad14 = new Data("IN", "IN", "ad14text"); 
-        Data ad15 = new Data("UK", "UK", "ad15text"); 
+        Data ad0 = new Data("UK", "ad0text");   
+        Data ad1 = new Data("FR", "ad1text");
+        Data ad2 = new Data("FR", "ad2text");
+        Data ad3 = new Data("US", "ad3text");
+        Data ad4 = new Data("IN", "ad4text");
+        Data ad5 = new Data("US", "ad5text");
+        Data ad6 = new Data("UK","ad6text"); 
+        Data ad7 = new Data("UK", "ad7text"); 
+        Data ad8 = new Data("UK","ad8text"); 
+        Data ad9 = new Data("UK", "ad9text"); 
+        Data ad10 = new Data("UK", "ad10text"); 
+        Data ad11 = new Data("UK", "ad11text"); 
+        Data ad12 = new Data("UK",  "ad12text"); 
+        Data ad13 = new Data("UK",  "ad13text"); 
+        Data ad14 = new Data("IN", "ad14text"); 
+        Data ad15 = new Data("UK",  "ad15text"); 
 
         List startingList = new List();
         List worldList = new List();
@@ -62,28 +62,28 @@ public class TestTree
         List brChildList = new List();
 
         //World
-        TreeNode world = new TreeNode( "World", worldList, worldChildList, null);
+        TreeNode world = new TreeNode( "World", worldList, worldChildList);
 
         //Asia
-        TreeNode asia = new TreeNode( "Asia", asiaList, asiaChildList,world);
-        TreeNode in = new TreeNode( "IN", inList, inChildList, asia);
+        TreeNode asia = new TreeNode( "Asia", asiaList, asiaChildList);
+        TreeNode in = new TreeNode( "IN", inList, inChildList);
         worldChildList.join(asia);
         asiaChildList.join(in);
 
         //America
-        TreeNode america = new TreeNode( "America", americaList, americaChildList,world);
-        TreeNode br = new TreeNode( "BR", brList, brChildList, america);
-        TreeNode us = new TreeNode( "US", usList, usChildList, america);
+        TreeNode america = new TreeNode( "America", americaList, americaChildList);
+        TreeNode br = new TreeNode( "BR", brList, brChildList);
+        TreeNode us = new TreeNode( "US", usList, usChildList);
         worldChildList.join(america);
         americaChildList.join(us);
 
 
         //Europe
-        TreeNode europe = new TreeNode( "Europe", europeList, europeChildList, world);
-        TreeNode uk = new TreeNode( "UK", ukList, ukChildList, europe);
-        TreeNode fr = new TreeNode( "FR", frList, frChildList, europe);
-        TreeNode nl = new TreeNode( "NL", nlList, nlChildList, europe);
-        TreeNode be = new TreeNode( "BE", beList, beChildList, europe);
+        TreeNode europe = new TreeNode( "Europe", europeList, europeChildList);
+        TreeNode uk = new TreeNode( "UK", ukList, ukChildList);
+        TreeNode fr = new TreeNode( "FR", frList, frChildList);
+        TreeNode nl = new TreeNode( "NL", nlList, nlChildList);
+        TreeNode be = new TreeNode( "BE", beList, beChildList);
         worldChildList.join(europe);      
         europeChildList.join(fr);
         europeChildList.join(be);
@@ -98,7 +98,7 @@ public class TestTree
         tree.classifyAds(startingList);
 
        
-        //System.out.println(europe.getParent().getCountry());
+
         System.out.println("\nPrinting result:");
         tree.groupAds(14);
 

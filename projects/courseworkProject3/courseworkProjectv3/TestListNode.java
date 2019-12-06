@@ -3,20 +3,30 @@ public class TestListNode
 {
     public static void main(){
 
-        testToString();
 
-     
-    }
-    public static void testToString(){
-        Data ad4 = new Data("IN", "IN", "ad4text");
-        Data ad14 = new Data("IN", "IN", "ad14text"); 
+        // create ads
+        Data ad4 = new Data("IN",  "ad4text");
+        Data ad14 = new Data("IN", "ad14text"); 
+        
+        // instantiate list
+        List testList = new List();
+        // Join ads to list
+        testList.join(ad4);
+        testList.join(ad14);
 
-        List inList = new List();
-        inList.join(ad4);
-        inList.join(ad14);
-
-        testEqualStrings(inList.toString(),"[IN-IN: \"ad4text\", IN-IN: \"ad14text\"]");
+        //check if after joining the two ads ig the result equals the expected.
+        //this one returns that the test was successful
+        testEqualStrings(testList.toString(),"[IN: \"ad4text\", IN: \"ad14text\"]");
+        //this one returns that the result is not as expected
+        testEqualStrings(testList.toString(),"[FR: \"ad4text\", IN: \"ad14text\"]");
+        
+       //ListNode node0 = new ListNode(null,ad4 );
        
+      // get item 0 and cast it to Data
+       Data a = (Data) testList.get(0);
+       // check if the object we got is the same as we would expect
+       testEqualData(a,ad4);
+
         
         
     }
@@ -29,6 +39,17 @@ public class TestListNode
             System.out.println ("Error: the result " + result + " does not equal the expected " + expected);
         }
     }
+    
+    public static void testEqualData (Data result, Data expected) {
+        if (result.equals (expected)) {   // Strings are objects, so use the equals method
+            System.out.println("Test was successful!");
+            
+        } else {
+            System.out.println ("Error: the result " + result + " does not equal the expected " + expected);
+        }
+    }
+    
+    
 }
 
    
