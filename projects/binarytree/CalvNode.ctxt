@@ -1,9 +1,0 @@
-#BlueJ class context
-comment0.target=CalvNode
-comment1.params=self\ partner
-comment1.target=CalvNode(boolean,\ boolean)
-comment2.params=isMan
-comment2.target=boolean\ getGenResult(boolean)
-comment3.params=
-comment3.target=void\ main()
-numComments=4

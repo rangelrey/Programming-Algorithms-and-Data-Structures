@@ -1,9 +1,0 @@
-#BlueJ class context
-comment0.target=TestList
-comment1.params=
-comment1.target=void\ main()
-comment2.params=result\ expected
-comment2.target=void\ testEqualStrings(java.lang.String,\ java.lang.String)
-comment3.params=result\ expected
-comment3.target=void\ testEqualInt(int,\ int)
-numComments=4

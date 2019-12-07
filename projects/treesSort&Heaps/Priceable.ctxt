@@ -1,7 +1,0 @@
-#BlueJ class context
-comment0.target=Priceable
-comment1.params=
-comment1.target=int\ getPrice()
-comment2.params=
-comment2.target=int\ addPrices()
-numComments=3

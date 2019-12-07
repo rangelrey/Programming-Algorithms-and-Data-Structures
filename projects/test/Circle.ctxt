@@ -1,7 +1,0 @@
-#BlueJ class context
-comment0.target=Circle
-comment1.params=colour\ radius
-comment1.target=Circle(java.lang.String,\ int)
-comment2.params=
-comment2.target=int\ getRadius()
-numComments=3
