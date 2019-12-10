@@ -29,11 +29,13 @@ public class TestGraph {
         GNode<String> nodeD = graph.addNode ("D");
         GNode<String> nodeE = graph.addNode ("E");
 
+        
         graph.addUndirectedLink (nodeA, nodeB);
         graph.addUndirectedLink (nodeA, nodeD);
-        graph.addUndirectedLink (nodeB, nodeE);
-        graph.addUndirectedLink (nodeC, nodeE);
+        graph.addUndirectedLink (nodeB, nodeC);
         graph.addUndirectedLink (nodeC, nodeD);
+        graph.addUndirectedLink (nodeB, nodeC);
+        graph.addUndirectedLink (nodeE, nodeD);
 
         System.out.println ("Cycle is: " + graph.getCircuit().toString());
     }

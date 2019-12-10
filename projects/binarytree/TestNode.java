@@ -96,5 +96,18 @@ public class TestNode{
         System.out.println(testString.equals(node0));
 
     }
+    
+    public static String sumTreeIntegerss( Node<Integer> Node) {
+    int sum =0;
+    
+    if (Node!= null) {
+        
+      sum += Node.getData();  
+        
+        
+    }
+        
+        
+    }
 
 }

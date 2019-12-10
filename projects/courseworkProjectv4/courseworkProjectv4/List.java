@@ -10,8 +10,8 @@ public class List<T> {
     public ListNode<T> getListNode() {
         return this.head;
     }
-    
-    public ListNode<T>next() {return this.getListNode().getNext();}
+
+    public ListNode<T> next() {return this.getListNode().getNext();}
 
     public boolean isEmpty () {
         return this.head == null;
@@ -38,17 +38,12 @@ public class List<T> {
         return false;
     }
 
-    // the join method creates a new ListNode<T>for the given item of item
-    // and appends the new item to the end of the list
     public  void join (T item) {
-        if (this.head == null) {                         // <1>
+        if (this.head == null) {                         
             this.head = new ListNode<T>(null, item);
-            return;                                   // <2>
+            return;                                   
         }
-
-        ListNode<T>current = this.head;                    // <3>
-
-        // walk the list to find the last item
+        ListNode<T>current = this.head;                    
         while (current.getNext () != null) {
             current = current.getNext ();
         }
@@ -109,7 +104,7 @@ public class List<T> {
         while (current != null) {
             if (currentIndex+1 == index) {   
                 ListNode<T>insertedNode = new ListNode<T>(current.getNext(), item); 
-               current.setNext(insertedNode);   
+                current.setNext(insertedNode);   
                 return; 
             }
             currentIndex += 1;
@@ -158,14 +153,12 @@ public class List<T> {
         while (current != null) {
 
             if (current.getNext().getItem().equals(ListNode.getItem())) {
-         
-                
+
                 current.setNext (current.getNext().getNext());
-               
                 return;
             }
             current = current.getNext();
-         
+
         }
     }
 
@@ -187,34 +180,29 @@ public class List<T> {
 
         return result;
     }
-    
+
     public void  reset(){
         head = null;
-         
+
     }
-    
+
     public void deleteSubList( List subListToDelete) {
         ListNode<T>current;
         current = subListToDelete.getListNode();
         while( current!=null) {
 
-        
+            this.deleteItem(current);
+            current = current.getNext();
+            System.out.println(this);
 
-        this.deleteItem(current);
-
-        current = current.getNext();
-        System.out.println(this);
-        
+        }
     }
-}
-    
+
     public void showList(){
         if (this.getListNode()!=null){
-      this.getListNode().showListNode(); 
+            System.out.println(this.getListNode().toString()); 
+        }
+
     }
-        
-    }
-    
-    
 
 }

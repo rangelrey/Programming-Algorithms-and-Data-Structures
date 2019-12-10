@@ -10,10 +10,7 @@ public class Node<T> {
         this.rightChild = null;
     }
     
-    
-  
-    
-    
+
     
     public T getData() {
         return data;

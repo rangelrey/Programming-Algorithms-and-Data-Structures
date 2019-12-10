@@ -1,67 +1,63 @@
 public class List<T> {
     private ListNode<T> head;
-    private T item;
 
     // the constructor simply creates the class with a null value for "head"
     public List () {
         head = null;
     }
 
-    public ListNode<T> getListNode() {
-        return this.head;
+    // the list is empty if it starts with null
+    public boolean isEmpty () {
+        return head == null;
     }
     
-    public ListNode<T>next() {return this.getListNode().getNext();}
-
-    public boolean isEmpty () {
-        return this.head == null;
-    }
-
     public int size () {
         int count = 0;
-        ListNode<T>current = this.head;
+        ListNode<T> current = head;
         while (current != null) {
-            count ++;
+            count += 1;
             current = current.getNext ();
         }
         return count;
     }
-
-    public boolean contains (T item) {
-        ListNode<T>current = this.head;
+    
+    public boolean contains (T data) {
+        ListNode<T> current = head;
         while (current != null) {
-            if (current.getItem().equals(item)) {
+            if (current.getData().equals(data)) {
                 return true;
             }
             current = current.getNext ();
         }
         return false;
     }
-
-    // the join method creates a new ListNode<T>for the given item of item
+    
+    // the join method creates a new ListNode for the given item of data
     // and appends the new item to the end of the list
-    public  void join (T item) {
-        if (this.head == null) {                         // <1>
-            this.head = new ListNode<T>(null, item);
+    public void join (T data) {
+        if (head == null) {                         // <1>
+            head = new ListNode (null, data);
             return;                                   // <2>
         }
 
-        ListNode<T>current = this.head;                    // <3>
+        ListNode current = head;                    // <3>
 
         // walk the list to find the last item
         while (current.getNext () != null) {
             current = current.getNext ();
         }
-        current.setNext (new ListNode<T>(null, item));
+
+        // make a new node from data and place it in the lastItem
+        current.setNext (new ListNode<T> (null, data));
     }
 
     public T leave () {
-        if (this.head == null) {
+        if (head == null) {
             return null;
         } else {
-            T firstItem = this.head.getItem ();
-            this.head = this.head.getNext ();
-            return firstItem;
+            T result = head.getData ();
+            head = head.getNext ();
+            return result;
         }
     }
 
@@ -71,7 +67,7 @@ public class List<T> {
 
         while (current != null) {
             if (currentIndex == index) {
-                return current.getItem ();
+                return current.getData ();
             }
             currentIndex += 1;
             current = current.getNext ();
@@ -79,13 +75,13 @@ public class List<T> {
         throw new ArrayIndexOutOfBoundsException (index);
     }
 
-    public void set (T item, int index) {
-        ListNode<T> current = this.head;
+    public void set (T data, int index) {
+        ListNode current = head;
         int currentIndex = 0;
 
         while (current != null) {
             if (currentIndex == index) {
-                current.item = item; ;
+                current.data = data;
                 return;
             }
             currentIndex += 1;
@@ -94,22 +90,22 @@ public class List<T> {
         throw new ArrayIndexOutOfBoundsException (index); 
     }
 
-    public void insert (T item, int index) {   
+    public void insert (T data, int index) {   
 
         if (index < 0) { // check index is positive
             throw new ArrayIndexOutOfBoundsException (index);
         }
 
         if (index == 0) {   // set a new first item in list
-            this.head = new ListNode<T>(this.head, item);
+            head = new ListNode<T> (head, data);
         }
 
-        ListNode<T>current = this.head;
+        ListNode<T> current = head;
         int currentIndex = 0;
         while (current != null) {
             if (currentIndex+1 == index) {   
-                ListNode<T>insertedNode = new ListNode<T>(current.getNext(), item); 
-               current.setNext(insertedNode);   
+                ListNode<T> insertedNode = new ListNode<> (current.getNext(), data); 
+                current.next = insertedNode;   
                 return; 
             }
             currentIndex += 1;
@@ -121,11 +117,11 @@ public class List<T> {
     public void delete (int index) {
 
         if (index == 0) { 
-            this.head = this.head.getNext ();
+            head = head.getNext ();
             return;
         }
 
-        ListNode<T>current = this.head;
+        ListNode<T> current = head;
         int currentIndex = 0;
         while (current != null) {
             if (currentIndex+1 == index) {
@@ -140,32 +136,23 @@ public class List<T> {
         }
         throw new ArrayIndexOutOfBoundsException (index); 
     }
-
+    
     // version of delete which deletes a node containing the given 'item'
     // -- it follows the pattern above closely, but matches the value, 
     //    not the index
-    public void deleteItem (ListNode<T>ListNode) {
-        System.out.println("head: "+this.head.getItem());
-        System.out.println("to Remove: "+ListNode.getItem());
-        if (this.head.getItem().equals (ListNode.getItem())) { // delete the first item
-            System.out.print("deleting: "+this.head.getItem());
-            this.head = this.head.getNext ();
-            System.out.println(this.head);
+    public void deleteItem (T item) {
+        if (head.getData().equals (item)) { // delete the first item
+            head = head.getNext ();
             return;
         }
-
-        ListNode<T>current = this.head;
+        
+        ListNode<T> current = head;
         while (current != null) {
-
-            if (current.getNext().getItem().equals(ListNode.getItem())) {
-         
-                
+            if (current.getNext().getData().equals(item)) {
                 current.setNext (current.getNext().getNext());
-               
                 return;
             }
             current = current.getNext();
-         
         }
     }
 
@@ -173,48 +160,18 @@ public class List<T> {
         String result = "";
 
         result += "[";
-        ListNode<T>current = this.head;
+        ListNode current = head;
 
         while (current != null) {
-            result += current.getItem();
-            if (current.getNext() != null) {
+            result += current.data;
+            if (current.next != null) {
                 result += ", ";
             }
-            current = current.getNext();
+            current = current.next;
         }
 
         result += "]";
 
         return result;
     }
-    
-    public void  reset(){
-        head = null;
-         
-    }
-    
-    public void deleteSubList( List subListToDelete) {
-        ListNode<T>current;
-        current = subListToDelete.getListNode();
-        while( current!=null) {
-
-        
-
-        this.deleteItem(current);
-
-        current = current.getNext();
-        System.out.println(this);
-        
-    }
-}
-    
-    public void showList(){
-        if (this.getListNode()!=null){
-      this.getListNode().showListNode(); 
-    }
-        
-    }
-    
-    
-
 }

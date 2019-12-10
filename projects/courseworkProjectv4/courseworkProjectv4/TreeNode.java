@@ -1,25 +1,18 @@
 public class TreeNode {
 
     private List childList;
-    private List finalTreeNodeList;
     private TreeNode child;
-    private String region;
-    
-    public TreeNode ( String region, List finalTreeNodeList,List childList) {
+    Data treeNodeData;
+    List treeList;
 
-        this.finalTreeNodeList = finalTreeNodeList;
+    public TreeNode ( Data treeNodeData ,List childList) {
         this.childList = childList;
-        this.region = region;
-
-
+        this.treeNodeData = treeNodeData;
+        this.treeList = (List) this.getData().getDataItem();
     }
-
     // these are accessor methods, one per field
-    public String getRegion(){return region;}
 
-
-
-    public List getAdList() { return finalTreeNodeList; }
+    public Data getData() { return treeNodeData; }
 
     public List getChildList () { return childList; }
 
@@ -28,61 +21,61 @@ public class TreeNode {
         return child;
     }
 
-    public void joinChild( TreeNode child) {
+    public void joinChild( TreeNode child) {childList.join( child);}
 
-        childList.join( child);
-
-    }
-
-    public void joinToAdList(Data ad){
-
-        this.getAdList().join(ad);
-
-    }
+    public void joinToAdList(Data ad){ treeList.join(ad);}
 
     public void showTreeNode(){
 
         TreeNode currentTreeNode = this;
-        System.out.println(currentTreeNode.getRegion());
+        System.out.println(currentTreeNode.getData().getRegion());
 
-        List childList  =  currentTreeNode.getAdList();
+        List childList  =  currentTreeNode.getChildList();
         int numberOfChildren = childList.size();
 
         for (int i=0; i<numberOfChildren; i++){
             System.out.println("ja");
             TreeNode child = (TreeNode) childList.get(i);
             child.showTreeNode();
-
         }
-
     }
 
     public void assignAdListNode(ListNode currentAdListNode) {
-  
 
         TreeNode currentTreeNode = this;
-        Data data = (Data) currentAdListNode.getItem();
-        String region = data.getRegion();
+        Data listData = (Data) currentAdListNode.getItem();
+        String region = listData.getRegion();
 
-        if (region.equals(currentTreeNode.getRegion())) {
-            currentTreeNode.joinToAdList(data);
+        if (region.equals(currentTreeNode.getData().getRegion())) {
+            currentTreeNode.joinToAdList(listData);
+            //System.out.println("follar");
             return;
         }
         else {
             List childList = currentTreeNode.getChildList();
             int numberOfChildren = childList.size();
-
+            //System.out.println("sex");
+            
+            //System.out.println(childList);
+            
             for (int i=0; i<numberOfChildren; i++){
+                //System.out.println(childList.get(i).getClass().getName());
+
+                //System.out.println(i);
                 child = (TreeNode) childList.get(i);
-                System.out.println(child.getRegion());
+                                //System.out.println(child.getData().getRegion());
+
 
                 child.assignAdListNode( currentAdListNode);
 
-                
-            }} } 
+            }
+            
+        } 
+    } 
 
     public int adListSize(){
-        int numberOfItemsInAdList= this.getAdList().size();
+        List adList = (List) this.getData().getDataItem();
+        int numberOfItemsInAdList= adList.size();
         return numberOfItemsInAdList;
     }
 
@@ -114,31 +107,27 @@ public class TreeNode {
 
     public void groupAdsInTreeNode(int limit){
         TreeNode currentTreeNode = this;
-
         if (currentTreeNode.limitExceeded(limit) == true){
-
             List childList = currentTreeNode.getChildList();
             int numberOfChildren = childList.size();
             for (int i=0; i<numberOfChildren; i++){
-
                 child = (TreeNode) childList.get(i);
-
                 child.groupAdsInTreeNode(limit);
-
             }
         }
         else {
-            System.out.println("\n"+currentTreeNode.getRegion());
-            currentTreeNode.showAllAdListsOfNodeAndChildren();
+            System.out.println("\n"+currentTreeNode.getData().getRegion());
+            currentTreeNode.showAllListsOfNodeAndChildren();
 
         }
 
     }
 
-    public void showAllAdListsOfNodeAndChildren(){
+    public void showAllListsOfNodeAndChildren(){
         TreeNode currentTreeNode = this;
         if (currentTreeNode!=null){
-            currentTreeNode.getAdList().showList();
+
+            treeList.showList();
 
             List childList = currentTreeNode.getChildList();
             int numberOfChildren = childList.size();
@@ -146,25 +135,11 @@ public class TreeNode {
 
                 child = (TreeNode) childList.get(i);
 
-                child.showAllAdListsOfNodeAndChildren();
+                child.showAllListsOfNodeAndChildren();
 
             }
         }
 
     }
 
-    public void displayTreeNode() {
-        int i;
-
-        System.out.println(this.getRegion() +": "+this.getAdList());
-
-        for (i=0; i<this.getChildList().size(); i++){
-            TreeNode node = (TreeNode) this.getAdList().get(i);
-            node.displayTreeNode();
-
-        }
-
-    }
-    
-    
 }

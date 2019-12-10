@@ -10,7 +10,7 @@ public class Data
     }
 
     public String getRegion() {
-        return region;
+        return this.region;
     }
 
 
@@ -20,9 +20,8 @@ public class Data
     
     public String toString() 
     {   String concat;
-        concat = this.region +": \"" +this.adText +"\"";
-        
-        return concat;
+        return concat = this.region +": \"" +this.adText +"\"";
+ 
     }
     
     

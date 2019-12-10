@@ -1,8 +1,6 @@
-
-public class TestTreeNode
-{
-    public static void main(){
-
+public class TestTree extends TestFramework
+{       public static void main() {
+        System.out.println("Creating ads");
         //create the ads
         Data ad0 = new Data("UK",  "ad0text");   
         Data ad1 = new Data("FR",  "ad1text");
@@ -21,6 +19,8 @@ public class TestTreeNode
         Data ad14 = new Data("IN", "ad14text"); 
         Data ad15 = new Data("UK", "ad15text"); 
 
+        
+        System.out.println("\nCreating lists...");
         //create the main list where all ads will be stored
         List startingList = new List();
         //create the lists that each TreeNode will contain
@@ -36,12 +36,14 @@ public class TestTreeNode
         List beList = new List();
         List brList = new List();
 
+        System.out.println("Joining ads to startingList");
         //Join the ads into the main list
         startingList.join(ad0);
         startingList.join(ad1);
         startingList.join(ad2);
         startingList.join(ad3);
         startingList.join(ad4);
+        startingList.join(ad6);
         startingList.join(ad5);
         startingList.join(ad7);
         startingList.join(ad8);
@@ -52,7 +54,8 @@ public class TestTreeNode
         startingList.join(ad13);
         startingList.join(ad14);
         startingList.join(ad15);
-
+        
+        System.out.println("Creating children lists...");
         //create the children list of each TreeNode
         List worldChildList = new List();
         List europeChildList = new List();
@@ -66,76 +69,71 @@ public class TestTreeNode
         List beChildList = new List();
         List brChildList = new List();
 
-        //create the TreeNodes
-        TreeNode world = new TreeNode( "World", worldList, worldChildList);
+        System.out.println("Creating Tree root Data");
+        Data TreeNodeDataWorld = new Data("World", worldList); 
+        System.out.println("Creating Tree root...");
+        TreeNode world = new TreeNode( TreeNodeDataWorld, worldChildList);
+        
+        
 
         //Asia
-        TreeNode asia = new TreeNode( "Asia", asiaList, asiaChildList);
-        TreeNode in = new TreeNode( "IN", inList, inChildList);
+        System.out.println("Creating Tree Node Data...");
+        Data TreeNodeDataAsia = new Data("Asia", asiaList);
+        Data TreeNodeDataIn = new Data("IN", inList);
+        
+        TreeNode asia = new TreeNode( TreeNodeDataAsia, asiaChildList);
+        TreeNode in = new TreeNode( TreeNodeDataIn, inChildList);
         worldChildList.join(asia);
         asiaChildList.join(in);
 
         //America
-        TreeNode america = new TreeNode( "America", americaList, americaChildList);
-        TreeNode br = new TreeNode( "BR", brList, brChildList);
-        TreeNode us = new TreeNode( "US", usList, usChildList);
+        Data TreeNodeDataAmerica = new Data("America", americaList);
+        Data TreeNodeDataBr = new Data("BR", brList);
+        Data TreeNodeDataUs = new Data("US", usList);
+        
+        TreeNode america = new TreeNode( TreeNodeDataAmerica, americaChildList);
+        TreeNode br = new TreeNode( TreeNodeDataBr, brChildList);
+        TreeNode us = new TreeNode( TreeNodeDataUs, usChildList);
         worldChildList.join(america);
         americaChildList.join(us);
 
         //Europe
-        TreeNode europe = new TreeNode( "Europe", europeList, europeChildList);
-        TreeNode uk = new TreeNode( "UK", ukList, ukChildList);
-        TreeNode fr = new TreeNode( "FR", frList, frChildList);
-        TreeNode nl = new TreeNode( "NL", nlList, nlChildList);
-        TreeNode be = new TreeNode( "BE", beList, beChildList);
+        
+        Data TreeNodeDataEurope = new Data("Europe", europeList);
+        Data TreeNodeDataUk = new Data("UK", ukList);
+        Data TreeNodeDataFr = new Data("FR", frList);
+        Data TreeNodeDataNl = new Data("NL", nlList);
+        Data TreeNodeDataBe = new Data("BE", beList);
+        
+        
+        TreeNode europe = new TreeNode( TreeNodeDataEurope, europeChildList);
+        TreeNode uk = new TreeNode( TreeNodeDataUk, ukChildList);
+        TreeNode fr = new TreeNode( TreeNodeDataFr, frChildList);
+        TreeNode nl = new TreeNode( TreeNodeDataNl, nlChildList);
+        TreeNode be = new TreeNode( TreeNodeDataBe, beChildList);
         worldChildList.join(europe);      
         europeChildList.join(fr);
         europeChildList.join(be);
         europeChildList.join(nl);
         europeChildList.join(uk);
+        
+       
 
         
-        // check that the nodes does not point to  null
-        System.out.print("\nComparing TreeNode to null:");
-        testEqualBooleans (europe.equals(null), false);
-
-        // check against a node with the same data. Should return an error
-        System.out.print("\nComparing TreeNode to another node:");
-        testEqualBooleans(europe.equals (new TreeNode("FR",frList,frChildList )), true);
-
-        // check if the following method works as expected
-        europe.joinToAdList(ad0);
-        //create a test list with the expected output
-        List testList = new List();
-        testList.join(ad0);
-        testEqualLists(europeList, testList);
-        
-        // in order to test the assignAdListNode method, we will 
-      
         
 
-}
-    
-    public static void testEqualBooleans (boolean result, boolean expected) {
-        if (result == expected) {
-            System.out.println(" The test was successful");
-        } else {
-            System.out.println ( " Error: the result " + result + " does not equal the expected " + expected);
-        }
+        Tree tree = new Tree(world);
+
+        tree.classifyAds(startingList);
+        
+        
+        //System.out.println(europe.getChildList().get(3));
+        
+       
+        //System.out.println("\nPrinting result:");
+        tree.groupAds(14);
+
+
+
     }
-
-    public static void testEqualLists (List result, List expected){
-        if (result.size()==expected.size()){
-            for (int i=0; i<result.size(); i++){
-                if (!result.get(i).equals(expected.get(i))){
-                    System.out.println ( "eError: the result " + result + " does not equal the expected " + expected);
-                    break;
-                };
-            }
-            System.out.println("Test was successful");
-        }
-        else {
-
-        System.out.println ( "wError: the result " + result + " does not equal the expected " + expected);
-    }}
 }
