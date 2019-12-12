@@ -47,6 +47,7 @@ public class Sorts {
 
     public static int findSmallestNumberIndex (int[] array, int start) {
         int smallest = start;
+        
 
         for (int current = smallest; current < array.length; current += 1) {
             if (array[current] < array[smallest]) {

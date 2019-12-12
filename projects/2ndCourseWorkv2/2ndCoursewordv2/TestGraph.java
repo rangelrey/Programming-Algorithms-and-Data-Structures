@@ -1,6 +1,6 @@
 public class TestGraph {
 
-    public static void testMethods() {
+    public static void testEurlerianGraph() {
         Audible holocaust = new Audible("Explanation of the murder, torture and violence in concentration camps in WW2", "7");
         Text treatyOfPeace = new Text("Copy of the final peace treaty between allies", "2");
         Text memories = new Text("memories of a mother missing his child during the war","3");
@@ -27,6 +27,8 @@ public class TestGraph {
         graph.addUndirectedLink (node6, node1);
         graph.addUndirectedLink (node7, node6);
 
+        System.out.println("Is the graph eulerian?");
+        
         System.out.println("Node1 has the following edges to: "+node1.getLinks().toString());
         System.out.println("Does the node have neighbours? "+node1.hasNeighbours());
         System.out.println("Node7 has the following edges to: "+node7.getLinks().toString());
@@ -43,8 +45,10 @@ public class TestGraph {
         System.out.println(nodesToRemove);
         System.out.println("Removing nodes from the graph");
         graph.removeGNodes(nodesToRemove); 
+        System.out.println("Does the graph have a circuit? " +graph.hasCircuit());
+        node7.disconnect();
         System.out.println("Does the node now have neighbours? "+node7.hasNeighbours());
-        System.out.println("Show the node that was connected to 7 "+node6.getLinks().toString());
+        System.out.println("Show the edges of the node that was connected to 7 "+node6.getLinks().toString());
         System.out.println("Cicle:"+graph.getCircuit().toString());
 
     }

@@ -7,5 +7,5 @@ public abstract class Exposition
     public abstract String getContent();
     
     
-    public String toString(){return this.title +": "+this.getContent();}
+    public String toString(){return this.title;}
 }
