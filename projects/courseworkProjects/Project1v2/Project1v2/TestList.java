@@ -1,0 +1,52 @@
+
+public class TestList extends TestFramework
+        //We will only test the methods that we have used in the project
+{       public static void main(){
+        Data ad0 = new Data("UK","ad0text");   
+        Data ad1 = new Data("FR","ad1text");
+        Data ad2 = new Data("FR","ad2text");
+        List startingList = new List();
+        startingList.join(ad0);
+        startingList.join(ad1);
+        startingList.join(ad2);
+        
+        //In order to have a clear understanding of how the list looks like,
+        //instead of printing a typical list horizontal [a,b,c,d...] format
+        // we will print it in a vertical format
+        System.out.println("These are the items of the list:");
+        startingList.showList();
+        
+        testEqualStrings(startingList.toString(),"[UK: \"ad0text\", FR: \"ad1text\", FR: \"ad2text\"]");        
+        testEqualInt(startingList.size(),3);
+        startingList.join(ad2);
+        testEqualStrings(startingList.toString(),"[UK: \"ad0text\", FR: \"ad1text\", FR: \"ad2text\", FR: \"ad2text\"]");        
+        
+        
+        System.out.println("Testing equals data");
+        Data testData = (Data) startingList.get(0);
+        testEqualData(testData, ad0);
+        
+        List<Data>testList = new List();
+        
+        testList.join(ad0);
+        testList.join(ad1);
+        testList.join(ad2);
+        testList.join(ad2);
+        testList.join(ad0);
+        testList.join(ad1);
+        testList.join(ad2);
+        testList.join(ad2);
+
+        List<Data> concatList = startingList.concatenate(startingList);
+
+        System.out.println("\nDid the method concatenate work?");
+        testEqualLists(concatList, testList);
+
+        
+    }
+    
+
+    
+
+
+}
