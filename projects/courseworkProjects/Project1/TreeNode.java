@@ -1,31 +1,29 @@
-
 import java.util.HashMap;
 public class TreeNode {
     private List<TreeNode> childList;
     private TreeNode child;
     Data treeNodeData;
     List<Data> treeList;
-
+    //the constructor takes a Data Object which will be formed by(String region, List adlList) and the childlist
     public TreeNode ( Data treeNodeData ,List childList) {
-        this.childList = childList;
-        this.treeNodeData = treeNodeData;
-        this.treeList = (List) this.getData().getDataItem();
+        this.childList = childList;  //the children of the tree node will be saved here
+        this.treeNodeData = treeNodeData; // the data of the tree node will be saved here
+        this.treeList =  this.getData().getDataItem();
     }
     // these are accessor methods, one per field
-
     public Data<List> getData() { return treeNodeData; }
 
     public List getChildList () { return childList; }
 
     public TreeNode getChild(int i) {
-        child = (TreeNode) childList.get(i);
+        child = childList.get(i);
         return child;
     }
 
     public void joinChild( TreeNode child) {childList.join( child);}
 
     public void joinToAdList(Data ad){ treeList.join(ad);}
-
+    //prints the tree node and its children
     public void showTreeNode(){
         TreeNode currentTreeNode = this;
         System.out.println(currentTreeNode.getData().getRegion());
@@ -36,7 +34,7 @@ public class TreeNode {
             child.showTreeNode();
         }
     }
-
+    //assigns each ad of the list into the tree nodes if the string regions matches with the tree node data region
     public void assignAdListNode(ListNode currentAdListNode) {
         TreeNode currentTreeNode = this;
         Data listData = (Data) currentAdListNode.getItem();
@@ -54,13 +52,13 @@ public class TreeNode {
             }
         } 
     } 
-
+    //return the size of the lists that is in he tree node
     public int adListSize(){
         List<Data> adList = this.getData().getDataItem();
         int numberOfItemsInAdList= adList.size();
         return numberOfItemsInAdList;
     }
-
+    //returns the total sum of the nomber of ads (items in the tree node lists) of the tree node and its children
     public int countAdsInNodeAndChidren(){
         TreeNode currentTreeNode = this;
         int numberOfItemsInAdList= currentTreeNode.adListSize();
@@ -72,7 +70,7 @@ public class TreeNode {
         }
         return numberOfItemsInAdList;
     }
-    //Checks if the number of items in the list exceeds the limit we specify
+    //Checks if the number of items in the list of the tree noed and its children exceeds the limit we specify
     public boolean limitExceeded(int limit){
         int numberOfItemsInAdListNode= this.countAdsInNodeAndChidren();
         if (numberOfItemsInAdListNode > limit){
@@ -80,8 +78,8 @@ public class TreeNode {
         }
         else {return false;}
     }
-
-    public void groupAdsInTreeNode(int limit){
+    //prints the groups the algorithm would generate based on the limit 
+    public void showGroupAdsInTreeNode(int limit){
         TreeNode currentTreeNode = this;
         // BASE CASE
         if (currentTreeNode.limitExceeded(limit)){
@@ -90,7 +88,7 @@ public class TreeNode {
             int numberOfChildren = childList.size();
             for (int i=0; i<numberOfChildren; i++){
                 child = (TreeNode) childList.get(i);
-                child.groupAdsInTreeNode(limit);
+                child.showGroupAdsInTreeNode(limit);
             }
         }
         else {
@@ -99,8 +97,9 @@ public class TreeNode {
         }
 
     }
-
-    public HashMap<String,List<Data>>createHashmap(int limit){
+    // returns a hasmhmap where the key is the name of the group (region) and the value a list with all ads that pertain to the group
+    //based on the limit
+    public HashMap<String,List<Data>>extractGroups(int limit){
         TreeNode currentTreeNode = this;
         HashMap<String,List<Data>> hashMap = new HashMap<>();
         if (!currentTreeNode.limitExceeded(limit)){
@@ -111,7 +110,7 @@ public class TreeNode {
             int numberOfChildren = childList.size();
             for (int i=0; i<numberOfChildren; i++){
                 child = (TreeNode) childList.get(i);
-                hashMap.putAll(child.createHashmap(limit));
+                hashMap.putAll(child.extractGroups(limit));
             } 
             return hashMap;
         }  
@@ -130,7 +129,7 @@ public class TreeNode {
             }
         }
     }
-
+    //returns a hashmap of tree node. The key is the region and the value the list of all ads 
     public HashMap<String,List<Data>> getHashMapOfNodeAndChildren(){
         TreeNode currentTreeNode = this;
         HashMap<String,List<Data>> hmap = new HashMap<>();
@@ -139,14 +138,14 @@ public class TreeNode {
         hmap.put(region, allLists);
         return hmap;
     }
-
+    //returns a concatenated list of all lists of a node and its children. 
     public List<Data> getAllListsFromNodeAndChildren(){
         TreeNode currentTreeNode = this;
         List<TreeNode> childList = currentTreeNode.getChildList();
         int numberOfChildren = childList.size();
         List<Data> currentAdList = currentTreeNode.getData().getDataItem();
 
-        if (numberOfChildren==0){ 
+        if (numberOfChildren==0){ //if it has no children, end of the tree
             return currentAdList;
         }
         else{        
@@ -156,9 +155,7 @@ public class TreeNode {
                 List<Data> adListChildren = child.getAllListsFromNodeAndChildren();
                 adListOfChildren= adListOfChildren.concatenate(adListChildren);
             }
-
             return currentAdList.concatenate(adListOfChildren);
-
         } 
     }
 

@@ -43,6 +43,7 @@ public class GNode<T> {
         }
         return sum;
     }
+    //get the degree of a node (how manz nodes is it linking to
     public int getDegree(){
         return links.size();}
 

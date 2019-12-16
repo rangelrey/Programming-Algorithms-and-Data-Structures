@@ -130,13 +130,13 @@ public class TestClassifyAds
         testInList.join(ad14);
         
         
-        System.out.println("\nTest if insertAdsInTree worked properly:");
+        System.out.println("\nTest if insertAdsInTree() worked properly:");
         TestFramework.testEqualLists(frList, testFrList);
         TestFramework.testEqualLists(inList, testInList);
         
-        
+        System.out.println("\nPrint how the groups would look like:");
         ClassifyAds.printGroupAds(14, tree);
-        
+        System.out.println("\nReturn the hashmap: the output of this project");
         System.out.print(ClassifyAds.generateOutput(14, tree));
 
               

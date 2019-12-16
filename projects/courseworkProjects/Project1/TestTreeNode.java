@@ -321,7 +321,7 @@ public class TestTreeNode extends TestFramework
 
 
         
-        System.out.println(world.createHashmap(5));
+        System.out.println(world.extractGroups(5));
         
         
         

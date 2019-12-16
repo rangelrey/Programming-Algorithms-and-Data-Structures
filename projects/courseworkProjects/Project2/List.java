@@ -1,6 +1,6 @@
 public class List<T> {
     private ListNode<T> head;
-
+    //this class won't be tested since it already was tested in Project1
     // the constructor simply creates the class with a null value for "head"
     public List () {
         head = null;

@@ -33,7 +33,8 @@ public class Graph<T> {
             return 0;
         }
     }
-    //carefuk with this function since it actualy removes the edges
+    //careful with this function since it actualy removes the edges
+    //it returns an eulerian circuit using a stack to save the visited nodes
     public List<T> getCircuit () {
         Stack<GNode<T>> stack = new Stack<> ();
         List<T> circuit = new List<> ();
@@ -63,7 +64,7 @@ public class Graph<T> {
         }
         return circuit;
     }
-
+    //returns a list with the nodes that contain a particular string
     public List<GNode> getGNodesThatContain(String string){
         List<GNode> gNodesToRemove = new List<> ();
         for (int j = 0; j<nodes.size(); j++){
@@ -76,7 +77,7 @@ public class Graph<T> {
             }
         } return gNodesToRemove;
     }
-
+    //removes the nodes that are in the list
     public void removeGNodes(List<GNode> nodesToRemove){
         for (int i = 0; i<nodesToRemove.size(); i++){
             GNode<T> gNodeToRemove = nodesToRemove.get(i);
@@ -92,7 +93,7 @@ public class Graph<T> {
             }
         }
     }
-
+    //returns true if the graph has a circuit
      public boolean hasCircuit () {   
         for(int i = 0; i < nodes.size(); i++)
         { GNode<T> node = nodes.get(i);

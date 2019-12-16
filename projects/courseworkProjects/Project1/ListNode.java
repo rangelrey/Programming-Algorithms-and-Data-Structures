@@ -1,7 +1,7 @@
 
 public class ListNode<T>{
-     ListNode<T> next;
-     T item;
+     private ListNode<T> next;
+     private T item;
 
     public ListNode (ListNode<T> next,  T item) {
         this.next = next;
@@ -14,6 +14,8 @@ public class ListNode<T>{
 
     // accessor for 'item' field
     public T getItem () {return item;}
+    
+    public  void setItem(T newItem) {this.item= newItem;}
 
     public String toString () {
         String result = "";

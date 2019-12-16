@@ -1,4 +1,5 @@
-
+//let's run all the tests at once, exctept the main one which we want to run each scenario 
+// individually
 public class AllTestsRunner
 {
     public static void main(){

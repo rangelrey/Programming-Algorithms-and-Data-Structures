@@ -5,6 +5,6 @@ public class Visual extends Exposition implements Contentable
         this.content = content;
         }
     public String getContent() {return this.imageProcess(content);}
-    
+    // our fake function that processes video/pictures to extract the relevant content
     public String imageProcess(String content){return this.content;}
 }

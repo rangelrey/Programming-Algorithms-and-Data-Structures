@@ -1,6 +1,6 @@
 public class List<T> {
-    ListNode<T> head;
-    T item;
+    private ListNode<T> head;
+    private T item;
     // the constructor simply creates the class with a null value for "head"
     public List () {head = null;}
     public ListNode<T> getListNode() {return this.head;}
@@ -69,7 +69,7 @@ public class List<T> {
         int currentIndex = 0;
         while (current != null) {
             if (currentIndex == index) {
-                current.item = item; ;
+                current.setItem(item) ;
                 return;
             }
             currentIndex += 1;
@@ -151,17 +151,17 @@ public class List<T> {
         return result;
     }
 
-    public void  reset(){head = null;}
-
+    
+    //concatenates two lists and returns the result of the concatenation
     public List<T>  concatenate(List<T> list){
-        List<T> auxiliarList = new List();
+        List<T> resultList = new List();
         for (int i=0; i<this.size();i++){
-            auxiliarList.join(this.get(i));
+            resultList.join(this.get(i));
             }
         for (int i=0; i<list.size();i++){
-            auxiliarList.join(list.get(i));
+            resultList.join(list.get(i));
             }  
-          return auxiliarList;
+          return resultList;
     }
 
     public void showList(){
